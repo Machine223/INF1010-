@@ -1,0 +1,12 @@
+﻿  Restaurant.cpp
+c:\users\machine\documents\inf1010\tp\tp2\enonce\restaurant.cpp(45): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\machine\documents\inf1010\tp\tp2\enonce\restaurant.cpp(59): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\machine\documents\inf1010\tp\tp2\enonce\restaurant.cpp(84): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\machine\documents\inf1010\tp\tp2\enonce\restaurant.cpp(96): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\machine\documents\inf1010\tp\tp2\enonce\restaurant.cpp(134): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\machine\documents\inf1010\tp\tp2\enonce\restaurant.cpp(162): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\machine\documents\inf1010\tp\tp2\enonce\restaurant.cpp(192): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\machine\documents\inf1010\tp\tp2\enonce\restaurant.cpp(210): warning C4018: '<' : incompatibilité signed/unsigned
+  main.cpp
+  Génération de code en cours...
+  tp2.1.vcxproj -> C:\Users\Machine\Documents\INF1010\TP\tp2\tp2\Debug\tp2.1.exe
