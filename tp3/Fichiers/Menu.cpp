@@ -68,7 +68,6 @@ ostream& operator<<(ostream& os, const Menu& menu)
 		if(menu.listePlats_[i]->getType() == Custom)
 			os << "\t" << *menu.listePlats_[i];
 	}
-
 	return os;
 }
 
@@ -79,7 +78,13 @@ Menu& Menu::operator+=(const Plat& plat) {
 	return *this;
 }
 
+Menu & Menu::operator+=(const PlatBio & plat)
+{
+	listePlats_.push_back(new PlatBio(plat.getNom, plat.getPrix, plat.getCout, plat.getEcoTaxe()));
+	return *this;
+}
 
+//Surcharge de l'operateur =
 Menu & Menu::operator=(const Menu & menu)
 {
 	if (this != &menu)
@@ -88,25 +93,19 @@ Menu & Menu::operator=(const Menu & menu)
 		listePlats_.clear();
 
 		for (unsigned i = 0; i < menu.listePlats_.size(); ++i)
-			//listePlats_.push_back(new Plat(*menu.listePlats_[i]));
-
-		Plat plat = (*menu.listePlats_[i]);
-
-		switch (plat.getType())
-		{
-		case Regulier:	//
-			listePlats_.push_back(new Plat(*menu.listePlats_[i]));
-			break;
-		case Bio:		//
-			PlatBio* platBio = static_cast <PlatBio*> (&plat);
-			listePlats_.push_back(new PlatBio(plat.getNom, plat.getPrix, plat.getCout, platBio->getCout));
-			break;
-		case Custom:	//		
-			PlatCustom* platCustom = static_cast <PlatCustom*> (&plat);
-			listePlats_.push_back(new PlatCustom(plat.getNom, plat.getPrix, plat.getCout, platCustom->getNbIngredients));
-			break;
+		{	
+			Plat plat = *menu.getListePlats[i];
+			if (menu.listePlats_[i]->getType() == Regulier)
+				listePlats_.push_back(new Plat(plat));
+			if (menu.listePlats_[i]->getType() == Bio) {
+				PlatBio* platBio = static_cast<PlatBio*>(&plat);
+				listePlats_.push_back(new PlatBio(plat.getNom, plat.getPrix, plat.getCout, platBio->getEcoTaxe));
+			}
+			if (menu.listePlats_[i]->getType() == Custom) {
+				PlatCustom* platCustom = static_cast<PlatCustom*>(&plat);
+				listePlats_.push_back(new PlatCustom(plat.getNom, plat.getPrix, plat.getCout, platCustom->getCout()));
+			}
 		}
-
 	}
 	return *this;
 }
@@ -165,7 +164,6 @@ void Menu::lireMenu(const string& fichier) {
 						}
 						nom += ligne[i]; 
 					}
-
 					//trouver le type 
 					for (int i = curseur + 1; i < int(ligne.size()); i++) {
 						if (ligne[i] == ' ') {

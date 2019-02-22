@@ -28,13 +28,13 @@ public:
 	//methodes en plus
 	Plat* trouverPlat(const string& nom) const; 
 	Menu& operator+=(const Plat& plat); 
-	///TODO
-	Menu& operator+=(const PlatBio& plat); 
-	///TO
-	Menu& operator=(const Menu& menu); ///A MODIFIER
+	Menu& operator+=(const PlatBio& plat); //qui prend en paramètre un objet de la classe PlatBio
+	Menu& operator=(const Menu& menu); // Operateur qui écrase les attributs du menu par les attributs du menu passé en paramètre
+	// et qui renvoie ensuite une référence au menu.
 	void lireMenu(const string& fichier); 
 	Plat* trouverPlatMoinsCher() const;
-	///TODO 
+
+	//Affichage
 	friend ostream& operator<<(ostream& os, const Menu& menu); //affiche les caractéristiques du menu
 	
 private : 
