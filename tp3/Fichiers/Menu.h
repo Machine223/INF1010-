@@ -10,8 +10,7 @@
 #include <fstream>
 #include <vector>
 #include"PlatBio.h"
-
-
+#include"PlatCustom.h"
 
 enum TypeMenu{Matin, Midi, Soir};
 
@@ -20,8 +19,7 @@ public:
 	// constructeurs
 	Menu(); 
 	Menu(string fichier, TypeMenu type);
-	///TODO
-	Menu(const Menu& menu); ///A modifier
+	Menu(const Menu& menu); //Un constructeur par copie
 
 
 	//getters
@@ -32,17 +30,16 @@ public:
 	Menu& operator+=(const Plat& plat); 
 	///TODO
 	Menu& operator+=(const PlatBio& plat); 
-	///TODO 
+	///TOD 
 	Menu& operator=(const Menu& menu); ///A MODIFIER
 	void lireMenu(const string& fichier); 
 	Plat* trouverPlatMoinsCher() const;
 	///TODO 
-	friend ostream& operator<<(ostream& os, const Menu& menu); ///A modifier
+	friend ostream& operator<<(ostream& os, const Menu& menu); //affiche les caractéristiques du menu
 	
 private : 
-	vector<Plat*> listePlats_; 
-	TypeMenu type_; 
-
+	vector<Plat*> listePlats_; //contenir des objets Plat ou PlatBio en fonction du fichier polyfood.txt.
+	TypeMenu type_; //Type de menu (Matin,Midi ou Soir)
 };
 
 #endif // !MENU_H

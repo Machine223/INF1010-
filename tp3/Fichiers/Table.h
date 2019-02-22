@@ -11,6 +11,7 @@
 #include "PlatCustom.h"
 #include "ClientPrestige.h"
 #include <vector>
+enum TypePlat { Regulier, Bio, Custom }; // a etait ajouter par moi pour fonction getTypePlat
 
 class Table {
 public:
@@ -26,25 +27,21 @@ public:
 	bool estPleine() const; 
 	int getNbClientsATable() const; 
 	vector<Plat*> getCommande() const;
-	///TODO
-	Client* getCliengtPrincipal() const; 
-	///TODO
-	double getChiffreAffaire() const;/// A Modifier
-
+	Client* getCliengtPrincipal() const; //Retourne le client principal
+	double getChiffreAffaire() const; //Prend en compte le type de plat dans la commande dans le calcul du chiffre d’affaire
+	
 
 	//setters
 	void libererTable(); 
 	void placerClients(int nbClients);
 	void setId(int id);
-	///TODO
 	void setClientPrincipal(Client* clientPrincipal); 
-
+	
 	//autres methodes
 	void commander(Plat* plat);
 
 	//affichage
-	///TODO
-	friend ostream& operator<<(ostream& os, const Table& table); /// A Modifier
+	friend ostream& operator<<(ostream& os, const Table& table); //affiche les caractéristiques de la table
 
 private :
 	vector<Plat*> commande_;
@@ -52,7 +49,9 @@ private :
 	int nbPlaces_;
 	int nbClientsATable_; 
 	///Nouvel attribut
-	Client* clientPrincipal_;
-	///
+	Client* clientPrincipal_;	// un pointeur sur la classe client qui représente le client principal de cette table.
+								// C’est ce client qui passe les commandes et son statut sera pris en compte pour
+								// appliquer les réductions.
+	
 };
 #endif // !TABLE_H

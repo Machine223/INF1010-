@@ -21,12 +21,29 @@ Menu::Menu(string fichier, TypeMenu type) {
 
 Menu::Menu(const Menu & menu): type_(menu.type_)
 {
-	///TODO 
-	///Modifier
-	for (unsigned i = 0; i < menu.listePlats_.size(); ++i)
-	{			listePlats_.push_back(new Plat(*menu.listePlats_[i]));
-
+	if (this != &menu)
+	{
+		for (unsigned i = 0; i < menu.listePlats_.size(); ++i)
+		{
+			Plat plat = (*menu.listePlats_[i]);
+			switch (plat.getType())
+			{
+			case Regulier:	//
+				listePlats_.push_back(new Plat(*menu.listePlats_[i]));
+				break;
+			case Bio:		//
+				PlatBio* platBio = static_cast <PlatBio*> (&plat);
+				listePlats_.push_back(new PlatBio(plat.getNom, plat.getPrix, plat.getCout, platBio->getCout));
+				break;
+			case Custom:	//		
+				PlatCustom* platCustom = static_cast <PlatCustom*> (&plat);
+				listePlats_.push_back(new PlatCustom(plat.getNom, plat.getPrix, plat.getCout, platCustom->getNbIngredients));
+				break;
+			}
+		}
 	}
+	else
+		cout << "Vous essayer de copier le meme menu!" << endl;
 }
 
 
@@ -46,7 +63,10 @@ ostream& operator<<(ostream& os, const Menu& menu)
 		
 		if(menu.listePlats_[i]->getType()==Regulier)
 			os << "\t" << *menu.listePlats_[i];
-
+		if(menu.listePlats_[i]->getType() == Bio)
+			os << "\t" << *menu.listePlats_[i];
+		if(menu.listePlats_[i]->getType() == Custom)
+			os << "\t" << *menu.listePlats_[i];
 	}
 
 	return os;
@@ -62,15 +82,31 @@ Menu& Menu::operator+=(const Plat& plat) {
 
 Menu & Menu::operator=(const Menu & menu)
 {
-	///TODO
-	/// A Modifier
 	if (this != &menu)
 	{
 		this->type_ = menu.type_;
 		listePlats_.clear();
 
 		for (unsigned i = 0; i < menu.listePlats_.size(); ++i)
+			//listePlats_.push_back(new Plat(*menu.listePlats_[i]));
+
+		Plat plat = (*menu.listePlats_[i]);
+
+		switch (plat.getType())
+		{
+		case Regulier:	//
 			listePlats_.push_back(new Plat(*menu.listePlats_[i]));
+			break;
+		case Bio:		//
+			PlatBio* platBio = static_cast <PlatBio*> (&plat);
+			listePlats_.push_back(new PlatBio(plat.getNom, plat.getPrix, plat.getCout, platBio->getCout));
+			break;
+		case Custom:	//		
+			PlatCustom* platCustom = static_cast <PlatCustom*> (&plat);
+			listePlats_.push_back(new PlatCustom(plat.getNom, plat.getPrix, plat.getCout, platCustom->getNbIngredients));
+			break;
+		}
+
 	}
 	return *this;
 }

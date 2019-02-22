@@ -11,7 +11,7 @@
 
 using namespace std;
 
-enum StatutClient { Occasionnel,Fidele,Prestige };
+enum StatutClient { Occasionnel,Fidele,Prestige};
 
 class Client{
 public:

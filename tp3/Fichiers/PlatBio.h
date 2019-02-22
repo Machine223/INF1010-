@@ -29,7 +29,7 @@ public:
 	friend ostream& operator<<(ostream& os, const PlatBio& plat); //Methode d'affichage
 
 private:
-	double ecoTaxe_;	
+	double ecoTaxe_; //taux qui s’ajoute au prix.
 };
 
 #endif // !PLAT_BIO_H

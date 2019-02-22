@@ -46,10 +46,20 @@ vector<Plat*> Table::getCommande() const
 	return commande_;
 }
 
+Client * Table::getCliengtPrincipal() const
+{
+	return clientPrincipal_;
+}
+
 
 //setters
 void Table::setId(int id) {
 	id_ = id;
+}
+
+void Table::setClientPrincipal(Client * clientPrincipal)
+{
+	clientPrincipal_ = clientPrincipal;
 }
 
 
@@ -70,14 +80,30 @@ void Table::commander(Plat* plat) {
 }
 
 double Table::getChiffreAffaire() const {
-	///TODO
-	///Modifier pour que le chiffre d'Affaire prenne en compte le type de plat
-	///voir Énoncé
+	
+	//Pour que le chiffre d'Affaire prend en compte le type de plat, nous verifions sont type
 	double chiffre = 0;
-	for (unsigned i = 0; i < commande_.size(); ++i) 
-			chiffre += commande_[i]->getPrix() - commande_[i]->getCout();
+	for (unsigned i = 0; i < commande_.size(); ++i) {
+		
+		Plat plat = (*commande_[i]);
+		switch(plat.getType())
+		{
+		case Regulier:	//Calcul le prix d'un type plat 
+			chiffre += plat.getPrix() - plat.getCout();
+			break;
+		case Bio:		//Calcul le prix d'un type platBio (downcasting)
+			PlatBio* platBio = static_cast <PlatBio*> (&plat);
+			chiffre += (plat.getPrix()* platBio->getEcoTaxe()) - plat.getCout();
+			break;
+		case Custom:	//Calcul le prix d'un type platCustom (downcasting) 		
+			PlatCustom* platCustom = static_cast <PlatCustom*> (&plat);
+			chiffre += (platCustom->getSupplement()) - plat.getCout();
+			break;
+		}
+	}
 	return chiffre;
 }
+
 
 //affichage
 
@@ -89,10 +115,25 @@ ostream& operator<<(ostream& os, const Table& table)
 		os << " est occupee. ";
 		if (!table.commande_.empty())
 		{
+			os << "Le client principal est : " << (*table.clientPrincipal_) << " ";
 			os << "Voici la commande passee par les clients : " << endl;
 			for (unsigned i = 0; i < table.commande_.size(); ++i)
 			{
-				os << "\t" << *table.commande_[i];
+				Plat plat = (*table.commande_[i]);
+				switch (plat.getType())
+				{
+				case Regulier:	//Calcul le prix d'un type plat 
+					os << "\t" << plat;
+					break;
+				case Bio:		//Calcul le prix d'un type platBio (downcasting)
+					PlatBio* platBio = static_cast <PlatBio*> (&plat);
+					os << "\t" << *platBio;
+					break;
+				case Custom:	//Calcul le prix d'un type platCustom (downcasting) 		
+					PlatCustom* platCustom = static_cast <PlatCustom*> (&plat);
+					os << "\t" << platCustom;
+					break;
+				}
 			}
 		}
 		else
