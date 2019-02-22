@@ -30,7 +30,7 @@ public:
 	Menu& operator+=(const Plat& plat); 
 	///TODO
 	Menu& operator+=(const PlatBio& plat); 
-	///TOD 
+	///TO
 	Menu& operator=(const Menu& menu); ///A MODIFIER
 	void lireMenu(const string& fichier); 
 	Plat* trouverPlatMoinsCher() const;
