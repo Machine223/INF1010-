@@ -94,7 +94,7 @@ Menu & Menu::operator=(const Menu & menu)
 
 		for (unsigned i = 0; i < menu.listePlats_.size(); ++i)
 		{	
-			Plat plat = *menu.getListePlats[i];
+			Plat plat = *menu.getListePlats[i]; //voir si jai une erreur car un indice requiert un type tableau ou pointeu
 			if (menu.listePlats_[i]->getType() == Regulier)
 				listePlats_.push_back(new Plat(plat));
 			if (menu.listePlats_[i]->getType() == Bio) {

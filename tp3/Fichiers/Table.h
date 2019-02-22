@@ -11,7 +11,7 @@
 #include "PlatCustom.h"
 #include "ClientPrestige.h"
 #include <vector>
-enum TypePlat { Regulier, Bio, Custom }; // a etait ajouter par moi pour fonction getTypePlat
+
 
 class Table {
 public:
