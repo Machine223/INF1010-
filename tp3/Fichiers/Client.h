@@ -8,7 +8,6 @@
 
 #include <string>
 #include <iostream>
-
 using namespace std;
 
 enum StatutClient { Occasionnel,Fidele,Prestige};
@@ -16,7 +15,7 @@ enum StatutClient { Occasionnel,Fidele,Prestige};
 class Client{
 public:
 	Client();
-	Client(string nom,string prenom,int tailleGroupe);
+	Client(string nom,string prenom,int tailleGroupe,enum StatutClient statut = Occasionnel);
 	~Client();
 
 // Accesseurs

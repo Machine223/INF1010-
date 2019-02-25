@@ -28,23 +28,23 @@ Menu::Menu(const Menu & menu): type_(menu.type_)
 			Plat plat = (*menu.listePlats_[i]);
 			switch (plat.getType())
 			{
-			case Regulier:	//
-			{
-				listePlats_.push_back(new Plat(*menu.listePlats_[i]));
-				break;
-			}
-			case Bio:		//
-			{
-				PlatBio* platBio = static_cast <PlatBio*> (&plat);
-				listePlats_.push_back(new PlatBio(plat.getNom(), plat.getPrix(), plat.getCout(), platBio->getCout()));
-				break;
-			}
-			case Custom:	//		
-			{
-				PlatCustom* platCustom = static_cast <PlatCustom*> (&plat);
-				listePlats_.push_back(new PlatCustom(plat.getNom(), plat.getPrix(), plat.getCout(), platCustom->getNbIngredients()));
-				break;
-			}
+				case Regulier:	
+				{
+					listePlats_.push_back(new Plat(plat));
+					break;
+				}
+				case Bio:	
+				{
+					PlatBio* platBio = static_cast <PlatBio*> (&plat);
+					listePlats_.push_back(new PlatBio(plat.getNom(), plat.getPrix(), plat.getCout(), platBio->getCout()));
+					break;
+				}
+				case Custom:		
+				{
+					PlatCustom* platCustom = static_cast <PlatCustom*> (&plat);
+					listePlats_.push_back(new PlatCustom(plat.getNom(), plat.getPrix(), plat.getCout(), platCustom->getNbIngredients()));
+					break;
+				}
 			}
 		}
 	}
@@ -100,7 +100,7 @@ Menu & Menu::operator=(const Menu & menu)
 
 		for (unsigned i = 0; i < menu.listePlats_.size(); ++i)
 		{	
-			Plat plat = *(menu.getListePlats())[i]; //voir si jai une erreur car un indice requiert un type tableau ou pointeu
+			Plat plat = *(menu.getListePlats())[i]; 
 			if (menu.listePlats_[i]->getType() == Regulier)
 				listePlats_.push_back(new Plat(plat));
 			if (menu.listePlats_[i]->getType() == Bio) {

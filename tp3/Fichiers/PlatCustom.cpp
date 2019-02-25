@@ -3,6 +3,8 @@
 PlatCustom::PlatCustom(string nom, double prix, double cout, int nbIngredients)
 	: Plat(nom, prix, cout), nbIngredients_(nbIngredients) 
 {
+	type_ = Custom;
+	setNbIngredients(nbIngredients);
 	supplement_ = calculerSupplement();
 }
 
@@ -32,7 +34,7 @@ double PlatCustom::calculerSupplement() const
 ostream & operator<<(ostream & os, const PlatCustom & plat)
 {
 	Plat platCustom = static_cast <Plat> (plat);
-	//ici on convertie un type PlatBio en un type Plat pour utiliser la methode de l'affichage de Plat
+	//ici on convertie un type platCustom en un type Plat pour utiliser la methode de l'affichage de Plat
 	os << platCustom << endl; //Utilise la methode de l'affichage de Plat 
 	return os;
 }

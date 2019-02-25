@@ -7,13 +7,14 @@
 #include "Table.h"
 
 //constructeurs
+//constructeurs par defaut
 Table::Table() 
 {
 	id_ = -1;
 	nbPlaces_ = 1;
 	nbClientsATable_ = 0;
 }
-
+//constructeurs par parametre
 Table::Table(int id, int nbPlaces)
 {
 	id_ = id;
@@ -51,7 +52,9 @@ vector<Plat*> Table::getCommande() const
 	return commande_;
 }
 
-Client * Table::getCliengtPrincipal() const
+
+//get le client principal
+Client * Table::getClientPrincipal() const
 {
 	return clientPrincipal_;
 }
@@ -62,17 +65,20 @@ void Table::setId(int id) {
 	id_ = id;
 }
 
+
+//set le client principal
 void Table::setClientPrincipal(Client * clientPrincipal)
 {
 	clientPrincipal_ = clientPrincipal;
 }
 
-
+// Methode pour liberer la table et remettre les attributs par defaut
 void Table::libererTable() {
 	nbPlaces_ += nbClientsATable_;
 	nbClientsATable_ = 0;
 	commande_.clear();
 }
+
 
 void Table::placerClients(int nbClient) {
 	nbPlaces_ -= nbClient;
@@ -84,6 +90,7 @@ void Table::commander(Plat* plat) {
 	commande_.push_back(plat);
 }
 
+//Get le chiffre d'affaire
 double Table::getChiffreAffaire() const {
 	
 	//Pour que le chiffre d'Affaire prend en compte le type de plat, nous verifions sont type

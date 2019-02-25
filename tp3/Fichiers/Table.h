@@ -10,6 +10,7 @@
 #include "Menu.h"
 #include "PlatCustom.h"
 #include "ClientPrestige.h"
+#include "ClientRegulier.h"
 #include <vector>
 
 
@@ -27,7 +28,7 @@ public:
 	bool estPleine() const; 
 	int getNbClientsATable() const; 
 	vector<Plat*> getCommande() const;
-	Client* getCliengtPrincipal() const; //Retourne le client principal
+	Client* getClientPrincipal() const; //Retourne le client principal
 	double getChiffreAffaire() const; //Prend en compte le type de plat dans la commande dans le calcul du chiffre d’affaire
 	
 

@@ -83,21 +83,16 @@ double Restaurant::getFraisTransports(int index) const
 
 
 //autres methodes 
-
 //prend en compte les différents avantages(réduction) du client principal
-void Restaurant::libererTable(int id) {
-
-	///TODO
-	///Modifier pour prendre en compte les différents types de clients et leurs privilèges
-	///Voir Énoncé
-
+void Restaurant::libererTable(int id) 
+{
 	for (unsigned i = 0; i < tables_.size(); ++i) {
 		if (id == tables_[i]->getId()) {
 			/*chiffreAffaire_ += tables_[i]->getChiffreAffaire(); 
 			tables_[i]->libererTable(); */
 			double chiffreAffaireTable = tables_[i]->getChiffreAffaire();
 
-			// Ici, nous allons calculer le chiffre de la table moins les r/duction que le client a droit.
+			// Ici, nous allons calculer le chiffre de la table moins les reduction que le client a droit.
 			chiffreAffaire_ += chiffreAffaireTable - calculerReduction(tables_[i]->getCliengtPrincipal(),
 			chiffreAffaireTable, tables_[i]->getCliengtPrincipal()->getStatut() == Prestige); 
 			tables_[i]->libererTable(); //Fonction pour liberer la table te la commande de celle-ci
@@ -136,10 +131,8 @@ ostream& operator<<(ostream& os, const Restaurant& restaurant)
 
 
 
-void Restaurant::commanderPlat(const string& nom, int idTable,TypePlat type, int nbIngredients) {
-
-	///TODO
-	/// Modifier la fonction pour ajouter des plats customisés aux commandes
+void Restaurant::commanderPlat(const string& nom, int idTable,TypePlat type, int nbIngredients) 
+{
 	Plat* plat = nullptr; 
 	int index; 
 	for (unsigned i = 0; i < tables_.size(); i++) {
@@ -286,10 +279,11 @@ void Restaurant::livrerClient(Client * client, vector<string> listeDePlats)
 	///Si oui lui assigner la table des livraisons 
 	///Effectuer la commande
 	if (client->getStatut() == Prestige) { //Vérifier que le client a droit aux livraisons
+		cout << "Livraison en cours ..." << endl;
 		tables_[INDEX_TABLE_LIVRAISON]->placerClients(1); //On place 1 client a l’indice INDEX_TABLE_LIVRAISON du tableau tables_.
 		tables_[INDEX_TABLE_LIVRAISON]->setClientPrincipal(client); //On vient mettre le Client Principal de cette table de livraison.
 		for (unsigned i = 0; i < listeDePlats.size(); i++)
-			commanderPlat(listeDePlats[i], tables_[INDEX_TABLE_LIVRAISON]->getId()); ////Effectuer la commande
+			commanderPlat(listeDePlats[i], tables_[INDEX_TABLE_LIVRAISON]->getId()); //Effectuer la commande
 
 		cout << "Statut de la table de livraison: (table numero "
 			<< tables_[INDEX_TABLE_LIVRAISON]->getId() << "):"

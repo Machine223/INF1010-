@@ -4,8 +4,8 @@ Client::Client() :nom_("inconnue"), prenom_("inconnue"), statut_(Occasionnel)
 {
 }
 
-Client::Client(string nom, string prenom, int tailleGroupe)
-		:nom_(nom),prenom_(prenom), tailleGroupe_(tailleGroupe)
+Client::Client(string nom, string prenom, int tailleGroupe, enum StatutClient statut )
+		:nom_(nom),prenom_(prenom), tailleGroupe_(tailleGroupe), statut_(statut)
 {
 }
 

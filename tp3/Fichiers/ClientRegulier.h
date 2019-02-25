@@ -11,12 +11,10 @@ class ClientRegulier : public Client
 {
 public:
 	ClientRegulier(); //Le constructeur par défaut
-	ClientRegulier(string nom , string prenom, int tailleGroupe ,int nbPoints); //Le constructeur par paramètres
-
+	ClientRegulier(string nom , string prenom, int tailleGroupe ,int nbPoints); //Le constructeur par parametres
 
 	//Accesseurs
 	int getNbPoints(); //accede au nombre de points
-
 
 	//Autres Méthodes
 	void augmenterNbPoints(int bonus); //prend en paramètre le nombre points à ajouter au solde actuel de points.

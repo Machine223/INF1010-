@@ -22,7 +22,7 @@ public:
 
 	//getters 
 	int getNbIngredients() const;
-	double getSupplement()const;
+	double getSupplement() const;
 
 	//setters 
 	void setNbIngredients(int nIngredients);
