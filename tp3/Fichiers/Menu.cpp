@@ -29,16 +29,22 @@ Menu::Menu(const Menu & menu): type_(menu.type_)
 			switch (plat.getType())
 			{
 			case Regulier:	//
+			{
 				listePlats_.push_back(new Plat(*menu.listePlats_[i]));
 				break;
+			}
 			case Bio:		//
+			{
 				PlatBio* platBio = static_cast <PlatBio*> (&plat);
-				listePlats_.push_back(new PlatBio(plat.getNom, plat.getPrix, plat.getCout, platBio->getCout));
+				listePlats_.push_back(new PlatBio(plat.getNom(), plat.getPrix(), plat.getCout(), platBio->getCout()));
 				break;
+			}
 			case Custom:	//		
+			{
 				PlatCustom* platCustom = static_cast <PlatCustom*> (&plat);
-				listePlats_.push_back(new PlatCustom(plat.getNom, plat.getPrix, plat.getCout, platCustom->getNbIngredients));
+				listePlats_.push_back(new PlatCustom(plat.getNom(), plat.getPrix(), plat.getCout(), platCustom->getNbIngredients()));
 				break;
+			}
 			}
 		}
 	}
@@ -80,7 +86,7 @@ Menu& Menu::operator+=(const Plat& plat) {
 
 Menu & Menu::operator+=(const PlatBio & plat)
 {
-	listePlats_.push_back(new PlatBio(plat.getNom, plat.getPrix, plat.getCout, plat.getEcoTaxe()));
+	listePlats_.push_back(new PlatBio(plat.getNom(), plat.getPrix(), plat.getCout(), plat.getEcoTaxe()));
 	return *this;
 }
 
@@ -94,16 +100,16 @@ Menu & Menu::operator=(const Menu & menu)
 
 		for (unsigned i = 0; i < menu.listePlats_.size(); ++i)
 		{	
-			Plat plat = *menu.getListePlats[i]; //voir si jai une erreur car un indice requiert un type tableau ou pointeu
+			Plat plat = *(menu.getListePlats())[i]; //voir si jai une erreur car un indice requiert un type tableau ou pointeu
 			if (menu.listePlats_[i]->getType() == Regulier)
 				listePlats_.push_back(new Plat(plat));
 			if (menu.listePlats_[i]->getType() == Bio) {
 				PlatBio* platBio = static_cast<PlatBio*>(&plat);
-				listePlats_.push_back(new PlatBio(plat.getNom, plat.getPrix, plat.getCout, platBio->getEcoTaxe));
+				listePlats_.push_back(new PlatBio(plat.getNom(), plat.getPrix(), plat.getCout(), platBio->getEcoTaxe()));
 			}
 			if (menu.listePlats_[i]->getType() == Custom) {
 				PlatCustom* platCustom = static_cast<PlatCustom*>(&plat);
-				listePlats_.push_back(new PlatCustom(plat.getNom, plat.getPrix, plat.getCout, platCustom->getCout()));
+				listePlats_.push_back(new PlatCustom(plat.getNom(), plat.getPrix(), plat.getCout(), platCustom->getNbIngredients()));
 			}
 		}
 	}
@@ -145,7 +151,6 @@ void Menu::lireMenu(const string& fichier) {
 
 		string ecotaxeString;
 		double ecoTaxe;
-
 
 		// lecture
 		while (!file.eof()) {
@@ -228,7 +233,6 @@ void Menu::lireMenu(const string& fichier) {
 				}
 			}
 		}
-
 		file.close(); 
 	}
 }
@@ -246,13 +250,11 @@ Plat * Menu::trouverPlatMoinsCher() const
 			found = i;
 		}
 	}
-
 	return listePlats_[found];
-
 }
 
 Plat* Menu::trouverPlat(const string& nom) const {
-	for (int i = 0; i < listePlats_.size(); ++i) {
+	for (size_t i = 0; i < listePlats_.size(); ++i) {
 		if (listePlats_[i]->getNom() == nom)
 			return listePlats_[i]; 
 	}

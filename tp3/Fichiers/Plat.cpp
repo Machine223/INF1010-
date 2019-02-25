@@ -7,8 +7,6 @@
 #include "Plat.h"
 
 //constructeur 
-
-
 Plat::Plat(string nom , double prix , double cout){
 	nom_ = nom;
 	prix_ = prix; 
@@ -47,7 +45,6 @@ bool Plat::operator<(const Plat& plat) const
 }
 
 //autres methodes
-
 ostream& operator<<(ostream& os, const Plat& plat)
 {
 	os << plat.nom_ << " - " << plat.prix_ << " $ (" << plat.cout_ << "$ pour le restaurant)" << endl;

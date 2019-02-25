@@ -35,11 +35,9 @@ Restaurant::Restaurant(const string& fichier,  const string& nom, TypeMenu momen
 	lireAdresses(fichier);
 }
 Restaurant::Restaurant(const Restaurant & restau) : nom_(new string(*restau.nom_)),
-chiffreAffaire_(restau.chiffreAffaire_),
-momentJournee_(restau.momentJournee_),
-menuMatin_(new Menu(*restau.menuMatin_)),
-menuMidi_(new Menu(*restau.menuMidi_)),
-menuSoir_(new Menu(*restau.menuSoir_))
+	chiffreAffaire_(restau.chiffreAffaire_),momentJournee_(restau.momentJournee_),
+	menuMatin_(new Menu(*restau.menuMatin_)),menuMidi_(new Menu(*restau.menuMidi_)),
+	menuSoir_(new Menu(*restau.menuSoir_))
 {
 	tables_.clear();
 	for (unsigned i = 0; i < restau.tables_.size(); ++i)
@@ -62,7 +60,6 @@ Restaurant::~Restaurant() {
 
 
 //setter 
-
 void Restaurant::setMoment(TypeMenu moment) {
 	momentJournee_ = moment; 
 }
@@ -85,10 +82,9 @@ double Restaurant::getFraisTransports(int index) const
 }
 
 
-
 //autres methodes 
 
-
+//prend en compte les différents avantages(réduction) du client principal
 void Restaurant::libererTable(int id) {
 
 	///TODO
@@ -101,42 +97,39 @@ void Restaurant::libererTable(int id) {
 			tables_[i]->libererTable(); */
 			double chiffreAffaireTable = tables_[i]->getChiffreAffaire();
 
-
+			// Ici, nous allons calculer le chiffre de la table moins les r/duction que le client a droit.
 			chiffreAffaire_ += chiffreAffaireTable - calculerReduction(tables_[i]->getCliengtPrincipal(),
-				chiffreAffaireTable, tables_[i]->getCliengtPrincipal->getStatut() == Prestige); //ICI FAUX a corriger faire condition pour diff type de client et envoyer bon un bool si prestige
-			tables_[i]->libererTable();
+			chiffreAffaireTable, tables_[i]->getCliengtPrincipal()->getStatut() == Prestige); 
+			tables_[i]->libererTable(); //Fonction pour liberer la table te la commande de celle-ci
 			break;
 		}
 	}
 }
 
 
-
-
-ostream& operator<<(ostream& os, const Restaurant& restau)
+ostream& operator<<(ostream& os, const Restaurant& restaurant)
 {
-	os << "Le restaurant " << *restau.nom_;
-	if (restau.chiffreAffaire_ != 0)
-		os << " a fait un chiffre d'affaire de : " << restau.chiffreAffaire_ << "$" << endl;
+	os << "Le restaurant " << *restaurant.nom_;
+	if (restaurant.chiffreAffaire_ != 0)
+		os << " a fait un chiffre d'affaire de : " << restaurant.chiffreAffaire_ << "$" << endl;
 	else
 		os << " n'a pas fait de benefice ou le chiffre n'est pas encore calcule." << endl;
 
 	os << "-Voici les tables : " << endl;
 
-	for (unsigned i = 0; i < restau.tables_.size(); i++) {
-		os  << *restau.tables_[i] << endl;
+	for (unsigned i = 0; i < restaurant.tables_.size(); i++) {
+		os  << *restaurant.tables_[i] << endl;
 	}
 	os << endl;
 
 
 	os << "-Voici son menu : " << endl;
 	os << "Matin : " << endl
-		<<*restau.menuMatin_<<endl << "Le plat le moins cher est : " << *restau.menuMatin_->trouverPlatMoinsCher() << endl;
-
+		<< *restaurant.menuMatin_<<endl << "Le plat le moins cher est : " << *restaurant.menuMatin_->trouverPlatMoinsCher()<< endl;
 	os << "Midi : " << endl
-		<< *restau.menuMidi_<<endl << "Le plat le moins cher est : " << *restau.menuMidi_->trouverPlatMoinsCher() << endl;
+		<< *restaurant.menuMidi_<<endl << "Le plat le moins cher est : " << *restaurant.menuMidi_->trouverPlatMoinsCher()<< endl;
 	os << "Soir : " << endl
-		<< *restau.menuSoir_<<endl << "Le plat le moins cher est : " << *restau.menuSoir_->trouverPlatMoinsCher() <<endl;
+		<< *restaurant.menuSoir_<<endl << "Le plat le moins cher est : " << *restaurant.menuSoir_->trouverPlatMoinsCher()<< endl;
 
 	return os;
 }
@@ -174,10 +167,9 @@ void Restaurant::commanderPlat(const string& nom, int idTable,TypePlat type, int
 	}
 	else if (type == Custom)
 	{
-		PlatCustom* platCustom = static_cast<PlatCustom*>(plat);
-		platCustom->setNbIngredients(nbIngredients);
-		tables_[index]->commander(platCustom);
-
+		PlatCustom* platCustom = static_cast<PlatCustom*>(plat); // cast d'un plat regulier a un platCustom (downcasting)
+		platCustom->setNbIngredients(nbIngredients); // definir le nombre d'ingredients dans le type plat Custom
+		tables_[index]->commander(platCustom); 
 	}
 	else
 	{
@@ -261,11 +253,6 @@ Restaurant& Restaurant::operator+=(Table* table) {
 	return *this;
 }
 
-Restaurant& Restaurant::operator+=(Table* table) {
-	tables_.push_back(new Table(*table));
-	return *this;
-}
-
 void Restaurant::placerClients(Client* client) {
 
 	/// TODO 
@@ -273,37 +260,36 @@ void Restaurant::placerClients(Client* client) {
 	///voir Énoncé
 	int indexTable = -1;
 	int minimum = 100;
-
 		
-
+	//Algorithme pour trouver la bonne table de maniere intelligente.
 	for (unsigned i = 0; i < tables_.size(); i++) {
 		if (tables_[i]->getNbPlaces() >= client->getTailleGroupe() && !tables_[i]->estOccupee() && tables_[i]->getNbPlaces() < minimum && i != INDEX_TABLE_LIVRAISON) {
-			indexTable = i;
-			minimum = tables_[i]->getNbPlaces();
+			indexTable = i; //on enregistre le nouvel emplacement de la table.
+			minimum = tables_[i]->getNbPlaces(); // on vien ajuster le minimun pour la table en fonction du nombre du groupe
 		}
 	}
-	if (indexTable == -1) {
+	if (indexTable == -1) { //verification si nous n'avons pas trouver de table adéquat pour le nombre de client. 
 		cout << "Erreur : il n'y a plus/pas de table disponible pour les clients. " << endl;
 	}
-	else
+	else //sinon on place le client a la bonne table.
 	{
-		tables_[indexTable]->placerClients(nbClients);
-		tables_[indexTable]->setClientPrincipal(client);
+		tables_[indexTable]->placerClients(client->getTailleGroupe()); 
+		tables_[indexTable]->setClientPrincipal(client); //definir le client principal
 	}
 }
 
-void Restaurant::livrerClient(Client * client, vector<string> commande)
+void Restaurant::livrerClient(Client * client, vector<string> listeDePlats)
 {
 	///TODO
 	///se réferer à l'énoncé 
 	///vérifier que le client a droit aux livraisons
 	///Si oui lui assigner la table des livraisons 
 	///Effectuer la commande
-	if (client->getStatut() == Prestige) {
-		tables_[INDEX_TABLE_LIVRAISON]->placerClients(1);
-		tables_[INDEX_TABLE_LIVRAISON]->setClientPrincipal(client);
-		for (unsigned i = 0; i < commande.size(); i++)
-			commanderPlat(commande[i], tables_[INDEX_TABLE_LIVRAISON]->getId());
+	if (client->getStatut() == Prestige) { //Vérifier que le client a droit aux livraisons
+		tables_[INDEX_TABLE_LIVRAISON]->placerClients(1); //On place 1 client a l’indice INDEX_TABLE_LIVRAISON du tableau tables_.
+		tables_[INDEX_TABLE_LIVRAISON]->setClientPrincipal(client); //On vient mettre le Client Principal de cette table de livraison.
+		for (unsigned i = 0; i < listeDePlats.size(); i++)
+			commanderPlat(listeDePlats[i], tables_[INDEX_TABLE_LIVRAISON]->getId()); ////Effectuer la commande
 
 		cout << "Statut de la table de livraison: (table numero "
 			<< tables_[INDEX_TABLE_LIVRAISON]->getId() << "):"
@@ -314,7 +300,6 @@ void Restaurant::livrerClient(Client * client, vector<string> commande)
 		cout << "Le client " << client->getNom() << " n'est pas admissible a la livraison"
 			<< endl << endl;
 	}
-
 }
 
 double Restaurant::calculerReduction(Client* client, double montant, bool livraison) {
@@ -327,8 +312,7 @@ double Restaurant::calculerReduction(Client* client, double montant, bool livrai
 	if (client->getStatut() == Prestige) {
 		ClientPrestige* clientPrest = static_cast<ClientPrestige*>(client);
 		if (clientPrest->getNbPoints() < SEUIL_LIVRAISON_GRATUITE && livraison == true)
-			return montant * TAUX_REDUC_PRESTIGE +
-			getFraisTransports(clientPrest->getAddresseCode());
+			return montant * TAUX_REDUC_PRESTIGE + getFraisTransports(clientPrest->getAddresseCode());
 		else
 			return montant * TAUX_REDUC_PRESTIGE;
 	}
@@ -339,48 +323,44 @@ void Restaurant::lireAdresses(const string & fichier)
 {
 	ifstream file(fichier, ios::in);
 
-		if (file) {
-			string ligne;
+	if (file) {
+		string ligne;
 
-			string addresseCodeStr;
-			int addressCode;
+		string addresseCodeStr;
+		int addressCode;
 
-			string fraisStrg;
-			double frais;
+		string fraisStrg;
+		double frais;
 
-			int curseur;
-			while (!file.eof()) {
-				getline(file, ligne);
-				if (ligne == "-ADDRESSES") {
-					while (!file.eof()) {
-						getline(file, ligne);
-						for (unsigned i = 0; i < ligne.size(); i++) {
-							if (ligne[i] == ' ') {
-								curseur = i;
-								break;
-							}
-							addresseCodeStr += ligne[i];
-							addressCode = stoi(addresseCodeStr);
-
+		int curseur;
+		while (!file.eof()) {
+			getline(file, ligne);
+			if (ligne == "-ADDRESSES") {
+				while (!file.eof()) {
+					getline(file, ligne);
+					for (unsigned i = 0; i < ligne.size(); i++) {
+						if (ligne[i] == ' ') {
+							curseur = i;
+							break;
 						}
-
-
-						fraisStrg = ligne.substr(curseur + 1);
-						frais = stod(fraisStrg);
-						fraisTransport_[addressCode] = frais;
-
-						addresseCodeStr = "";
-						fraisStrg = "";
-
-
+						addresseCodeStr += ligne[i];
+						addressCode = stoi(addresseCodeStr);
 
 					}
 
-					
+					fraisStrg = ligne.substr(curseur + 1);
+					frais = stod(fraisStrg);
+					fraisTransport_[addressCode] = frais;
+
+					addresseCodeStr = "";
+					fraisStrg = "";
+
 				}
+					
 			}
-			file.close();
 		}
+		file.close();
 	}
+}
 
 

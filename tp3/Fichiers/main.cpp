@@ -7,12 +7,12 @@
 #include "Restaurant.h"
 #include "ClientPrestige.h"
 
-
-using namespace std; 
+	
+using namespace std;
 
 int main() {
 
-
+	
 
 	//creation du restaurant 
 	Restaurant poly("polyFood.txt", "PolyFood", Soir); 
@@ -36,7 +36,7 @@ int main() {
 
 	cout << "\t\t\t\t\tLIVRAISONS" << endl;
 	cout << "--------------------------------------------------------------------------------------------------" << endl;
-
+	cout << "Livraison en cours ..." << endl;
 	//Livrer les clients Marie et Martins
 	poly.livrerClient(cl1, commandeMartin);
 	poly.livrerClient(cl6, commandeMarie);
@@ -73,7 +73,7 @@ int main() {
 	//liberer les tables et calcule du chiffre d'affaire
 	poly.libererTable(1);
 	poly.libererTable(2);
-	poly.libererTable(3);
+	//poly.libererTable(3);
 	poly.libererTable(4);
 
 	cout << poly;
@@ -95,5 +95,5 @@ int main() {
 	delete cl3;
 	delete cl4;
 	delete cl5;
-
+	
 }

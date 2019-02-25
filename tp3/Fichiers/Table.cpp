@@ -7,24 +7,28 @@
 #include "Table.h"
 
 //constructeurs
-Table::Table() {
+Table::Table() 
+{
 	id_ = -1;
 	nbPlaces_ = 1;
 	nbClientsATable_ = 0;
 }
 
-Table::Table(int id, int nbPlaces) {
+Table::Table(int id, int nbPlaces)
+{
 	id_ = id;
 	nbPlaces_ = nbPlaces;
 	nbClientsATable_ = 0;
 }
 
 //getters
-int Table::getId() const {
+int Table::getId() const 
+{
 	return id_;
 }
 
-int Table::getNbPlaces() const {
+int Table::getNbPlaces() const 
+{
 	return nbPlaces_;
 }
 
@@ -33,7 +37,8 @@ bool Table::estOccupee() const
 	return nbClientsATable_!=0;
 }
 
-bool Table::estPleine() const {
+bool Table::estPleine() const 
+{
 	return nbPlaces_ == 0;
 }
 
@@ -92,9 +97,11 @@ double Table::getChiffreAffaire() const {
 			chiffre += plat.getPrix() - plat.getCout();
 			break;
 		case Bio:		//Calcul le prix d'un type platBio (downcasting)
+		{
 			PlatBio* platBio = static_cast <PlatBio*> (&plat);
 			chiffre += (plat.getPrix()* platBio->getEcoTaxe()) - plat.getCout();
 			break;
+		}
 		case Custom:	//Calcul le prix d'un type platCustom (downcasting) 		
 			PlatCustom* platCustom = static_cast <PlatCustom*> (&plat);
 			chiffre += (platCustom->getSupplement()) - plat.getCout();
@@ -126,12 +133,18 @@ ostream& operator<<(ostream& os, const Table& table)
 					os << "\t" << plat;
 					break;
 				case Bio:		//Calcul le prix d'un type platBio (downcasting)
+				{
 					PlatBio* platBio = static_cast <PlatBio*> (&plat);
 					os << "\t" << *platBio;
 					break;
-				case Custom:	//Calcul le prix d'un type platCustom (downcasting) 		
+				}
+				case Custom:	//Calcul le prix d'un type platCustom (downcasting) 
+				{
 					PlatCustom* platCustom = static_cast <PlatCustom*> (&plat);
-					os << "\t" << platCustom;
+					os << "\t" << *platCustom;
+					break;
+				}
+				default:
 					break;
 				}
 			}
@@ -141,6 +154,5 @@ ostream& operator<<(ostream& os, const Table& table)
 	}
 	else
 		os << " est vide. " << endl;
-
 	return os;
 }

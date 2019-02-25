@@ -17,9 +17,9 @@ const int INDEX_TABLE_LIVRAISON = 4;
 class Restaurant {
 public:
 	//constructeurs
-	Restaurant();
-	Restaurant(const string& fichier, const string& nom,  TypeMenu moment);
-	Restaurant(const Restaurant& restau); 
+	Restaurant();  //Constructeur par defaut
+	Restaurant(const string& fichier, const string& nom,  TypeMenu moment); //Constructeur par parametre
+	Restaurant(const Restaurant& restau);  //Constructeur par copie
 
 	//destructeur
 	~Restaurant();
@@ -38,21 +38,15 @@ public:
 	void lireAdresses(const string& fichier);
 
 	Restaurant& operator+=(Table* table); 
-	///TODO
-	void libererTable(int id); /// A Modifier
-	///TODO 
-	void commanderPlat(const string& nom, int idTable, TypePlat type= Regulier,int nbIngredients = 0); ///A modifier
+	void libererTable(int id); // Prend en compte les différents avantages(réduction) du client principal et ajuste le chiffre d'affaire
+	void commanderPlat(const string& nom, int idTable, TypePlat type= Regulier,int nbIngredients = 0); //Commande le plat et qui s’adapte à l’existence des plat customisés
 	bool operator < (const Restaurant& restau) const ;
 	Restaurant& operator = (const Restaurant& restau); 
-	///TODO 
-	void placerClients(Client* client);///A Modifier
-	///TODO
-	void livrerClient(Client * client, vector<string>nomPlats);
-	///TODO
-	double calculerReduction(Client* client, double montant, bool livraison);
-	//TODO
-	friend ostream& operator<<(ostream& os, const Restaurant& restau); 
-
+	void placerClients(Client* client);//Place un client et qui s’adapte à la nouvelle structure du client ( Indice : la taille du groupe).
+	
+	void livrerClient(Client * client, vector<string> listeDePlats);
+	double calculerReduction(Client* client, double montant, bool livraison); //Applique le type de reduction au trype de client.
+	friend ostream& operator<<(ostream& os, const Restaurant& restau); //affiche les caractéristiques du restaurant.
 
 private:
 	string* nom_;
@@ -69,8 +63,8 @@ private:
 	vector<Table*> tables_;
 
 	//Tarif des trois zones de livraison nouvel attribut
-	double fraisTransport_[NB_ZONES_LIVR]; 
-
+	double fraisTransport_[NB_ZONES_LIVR]; //contient le montant des différents frais de livraison pour les trois zones
+	//Sa lecture a déjà été effectué par la méthode lireAdresses()
 
 };
 #endif // !RESTAURANT_H

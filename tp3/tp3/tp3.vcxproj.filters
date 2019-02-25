@@ -15,36 +15,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Fichiers\client.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Fichiers\clientPrestige.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Fichiers\clientRegulier.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Fichiers\main.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Fichiers\Menu.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Fichiers\Plat.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Fichiers\PlatBio.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Fichiers\PlatCustom.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Fichiers\Restaurant.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Fichiers\Table.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
+    <Text Include="..\Fichiers\polyFood.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Fichiers\Client.h">
@@ -76,8 +49,35 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\Fichiers\polyFood.txt">
-      <Filter>Fichiers de ressources</Filter>
-    </Text>
+    <ClCompile Include="..\Fichiers\client.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fichiers\clientPrestige.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fichiers\clientRegulier.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fichiers\main.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fichiers\Menu.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fichiers\Plat.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fichiers\PlatBio.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fichiers\PlatCustom.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fichiers\Restaurant.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fichiers\Table.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
