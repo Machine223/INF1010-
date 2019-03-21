@@ -20,11 +20,11 @@ class Plat {
 public:
 	// constructeur
 	Plat( string_view nom = "inconnu", double prix = 0, double cout = 0);
-	Plat(const Plat& platCopie); //Constructeur par copie pour utiliser dans clone de plat
+	virtual Plat(const Plat& platCopie); //Constructeur par copie pour utiliser dans clone de plat
 
 
     // destructeur
-	~Plat(); // TODO
+	~Plat(); // TODO avoir un destructeur virtuel
 	//getters 
 	string getNom() const;
 	double getPrix() const;
@@ -35,10 +35,10 @@ public:
 	void setPrix(double prix);
 
 	//methodes en plus
-    double getPrixRevient();
-    Plat* clone () const; // TODO DONE
+    virtual double getPrixRevient() const;
+    virtual Plat* clone () const; // TODO DONE
 	bool operator < (const Plat& plat) const;
-    void afficherPlat(ostream& os) const; // TODO DONE
+    virtual void afficherPlat(ostream& os) const; // TODO DONE vistual car utiliser dans les classe derivee
 
 
 protected:

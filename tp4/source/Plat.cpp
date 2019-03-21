@@ -49,14 +49,14 @@ bool Plat::operator < (const Plat& plat) const
 }
 
 // La méthode afficherPlat() affiche les attributs 
-//du plat (voir l’affichage à la fin de l’énoncé) : nom, le prix et le coût comme présenté dans l’annexe.
+// du plat (voir l’affichage à la fin de l’énoncé) : nom, le prix et le coût comme présenté dans l’annexe.
 void Plat::afficherPlat(ostream & os) const
-{ // TODO virtuel ou pas
-	os << nom_ << " - " << prix_ << " $" << " (" << cout_ << "$ pour le restaurant)";
+{ 
+	os << "PLAT---- " << nom_ << " - " << prix_ << " $" << " (" << cout_ << "$ pour le restaurant)";
 }
 
 
-double Plat::getPrixRevient()
+double Plat::getPrixRevient() const
 {  
 	return prix_ - cout_;
 }
@@ -64,5 +64,6 @@ double Plat::getPrixRevient()
 //La méthode clone() retourne un objet alloué dynamiquement qui est une copie de l’objet courant.
  Plat*  Plat:: clone () const
 {
+
 	 return new Plat(*this);
 }

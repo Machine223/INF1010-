@@ -31,5 +31,11 @@ double PlatBio:: getPrixDeRevient()
 
 void PlatBio::afficherPlat(ostream& os) const
 {
-    //TODO
+	os << "PLAT---- " << nom_ << " - " << prix_ << " $" << " (" << cout_ << "$ pour le restaurant)";
+	os << endl << "Plat Bio comprend une Taxe ecologique de : " << ecoTaxe_ << "$";
+}
+
+double PlatBio::getPrixDeRevient()
+{
+	return return prix_ - cout_ + ecoTaxe_;
 }
