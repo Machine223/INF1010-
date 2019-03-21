@@ -8,7 +8,11 @@
 #include <string_view>
 #include <string>
 #include"Taxable.h"
+#include "def.h"
+
+
 using namespace std;
+
 class Vege
 {
 public:
@@ -20,7 +24,7 @@ public:
 	void setProteines(double proteines);
 	void setMineraux(double mineraux);
     void afficherVege(ostream & os)const; // TODO
-    double calculerApportNutritif() const;//TODO
+    double calculerApportNutritif() const;//TODO voir si mettre virtuelle pure ou pas (si oui ajouter obligatoire =0)
 
 protected: 
 	double vitamines_;
