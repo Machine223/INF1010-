@@ -46,7 +46,7 @@ void Vege::afficherVege(ostream & os) const
 
 double Vege::calculerApportNutritif() const
 {
-	return (vitamines_ * proteines_ / mineraux_) * RAPPORT_NUTRITIF; // pas sur!
+	return (vitamines_ * proteines_ / mineraux_) * RAPPORT_NUTRITIF; // pas sur a verifier!
 }
 
 

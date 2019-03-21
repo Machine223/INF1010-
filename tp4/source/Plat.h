@@ -11,13 +11,20 @@
 #include <string_view>
 #include <iostream>
 #include "def.h"
-using std::string, std::string_view, std::ostream;  //? On ne devrait normalement pas faire de "using" global dans un .h, mais c'est accepte en INF1010.
+
+//using std::string, std::string_view, std::ostream;  //? On ne devrait normalement pas faire de "using" global dans un .h, mais c'est accepte en INF1010.
+
+using namespace std;
 
 class Plat {
 public:
 	// constructeur
-	Plat(string_view nom = "inconnu", double prix = 0, double cout = 0);
-         ~Plat();
+	Plat( string_view nom = "inconnu", double prix = 0, double cout = 0);
+	Plat(const Plat& platCopie); //Constructeur par copie pour utiliser dans clone de plat
+
+
+    // destructeur
+	~Plat(); // TODO
 	//getters 
 	string getNom() const;
 	double getPrix() const;
@@ -28,10 +35,10 @@ public:
 	void setPrix(double prix);
 
 	//methodes en plus
-        double getPrixRevient();
-        Plat *  clone () const; // TODO
+    double getPrixRevient();
+    Plat* clone () const; // TODO DONE
 	bool operator < (const Plat& plat) const;
-        void afficherPlat(ostream& os) const; // TODO
+    void afficherPlat(ostream& os) const; // TODO DONE
 
 
 protected:
