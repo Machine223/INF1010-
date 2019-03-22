@@ -41,7 +41,7 @@ void Vege::setMineraux(double mineraux)
 }
 void Vege::afficherVege(ostream & os) const
 {   
-	os << "vitamines " << mineraux_ << " Proteines" << proteines_ << " Mineraux" << mineraux_;
+	os << "/t vitamines " << mineraux_ << " Proteines" << proteines_ << " Mineraux" << mineraux_;
 }
 
 double Vege::calculerApportNutritif() const

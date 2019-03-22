@@ -5,26 +5,29 @@
 #include "PlatVege.h"
 
 
-//TODO
+//TODO DONE
 PlatVege::PlatVege(string nom, double prix, double cout,
-                   double vitamines, double proteines, double mineraux)
-{
-    //TODO
-}
+                   double vitamines, double proteines, double mineraux) 
+	: Plat(nom, prix, cout), Vege(nom, vitamines, proteines, mineraux) {}
+
+
 PlatVege::~ PlatVege(){}
 
 Plat* PlatVege::clone()const
-{ //TODO
-    
+{ 
+	return new PlatVege(*this);
 }
 
 
 void PlatVege::afficherPlat(ostream & os) const
-{   //TODO
+{   
+	Plat::afficherPlat(os);
+	os << "PLAT VEGE " << Vege::nom_; Vege::afficherVege(os);
+	os << "(Apport nutritif " << calculerApportNutritif() << "mg)" << endl;
 }
 
 double PlatVege::calculerApportNutritif() const
 {
-
-    //TODO
+	return Vege::calculerApportNutritif();
+    
 }

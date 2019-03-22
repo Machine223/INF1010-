@@ -20,7 +20,7 @@ Plat * PlatBioVege::clone() const
 void PlatBioVege::afficherPlat(ostream & os) const
 {   //TODO
 	PlatBio::afficherPlat(os);
-	os << "ET PLAT VEGE " << Vege:: nom_ << "/t vitamines " << vitamines_ << " Proteines " << proteines_ << " Mineraux " << mineraux_ << endl;
+	os << "ET PLAT VEGE " << Vege::nom_; Vege::afficherVege(os);
 
 }
 
