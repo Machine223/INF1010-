@@ -8,16 +8,15 @@
 #include "PlatBio.h"
 #include "Vege.h"
 #include "def.h"
-class PlatBioVege :
-	public PlatBio, public Vege
+class PlatBioVege : public PlatBio, public Vege
 {
 public:
 	PlatBioVege(string nom = "inconnu", double prix = 0, double cout = 0, double ecotaxe = 0,
-                double vitamines = 0, double proteines = 0, double mineraux = 0);// TODO
-        ~PlatBioVege();
-        Plat * clone() const; // TODO
-        void afficherPlat(ostream & os) const;// TODO
-        double calculerApportNutritif() const; // TODO
+	double vitamines = 0, double proteines = 0, double mineraux = 0);// TODO
+	~PlatBioVege();
+	Plat * clone() const; // TODO
+	void afficherPlat(ostream & os) const;// TODO
+	double calculerApportNutritif() const; // TODO
 
 };
 #endif
