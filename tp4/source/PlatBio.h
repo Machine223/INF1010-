@@ -18,18 +18,21 @@ public:
     PlatBio(string nom = "inconnu", double prix = 0, double cout = 0, double ecotaxe = 0); //TODO deja fait
 
 	// destructeur
-    ~ PlatBio(); //TODO
+    virtual ~ PlatBio(); //TODO
 	//getters 
 	double getEcoTaxe() const;
 	//setters 
 	void setEcoTaxe(double ecoTaxe);
-    void afficherPlat(ostream& os) const override; // TODO A completer
-    virtual double getPrixDeRevient(); //TODO voir pourquoi on ne peux pas mettre override a la fin
-    Plat * clone() const override; // TODO
 
-protected:   // garde les carat/ristique de private mais peut être utiliser dans une classe dérivée
+	// Autres methodes
+    virtual void afficherPlat(ostream& os) const; // TODO DONE
+    virtual double getPrixDeRevient(); //TODO voir pourquoi on ne peux pas mettre override a la fin
+    virtual Plat * clone() const; // TODO DONE
+
+protected:   // garde les carateristiques de private mais peut être utiliser dans une classe dérivée
 	double ecoTaxe_;
 
 };
+
 
 #endif // !PLAT_VERT_H

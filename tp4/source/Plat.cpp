@@ -52,7 +52,7 @@ bool Plat::operator < (const Plat& plat) const
 // du plat (voir l’affichage à la fin de l’énoncé) : nom, le prix et le coût comme présenté dans l’annexe.
 void Plat::afficherPlat(ostream & os) const
 { 
-	os << "PLAT---- " << nom_ << " - " << prix_ << " $" << " (" << cout_ << "$ pour le restaurant)";
+	os << "PLAT ---- " << nom_ << " - " << prix_ << " $" << " (" << cout_ << "$ pour le restaurant)"<<endl;
 }
 
 

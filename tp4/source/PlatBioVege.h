@@ -12,11 +12,11 @@ class PlatBioVege : public PlatBio, public Vege
 {
 public:
 	PlatBioVege(string nom = "inconnu", double prix = 0, double cout = 0, double ecotaxe = 0,
-	double vitamines = 0, double proteines = 0, double mineraux = 0);// TODO
+	double vitamines = 0, double proteines = 0, double mineraux = 0);// TODO DONE
 	~PlatBioVege();
-	Plat * clone() const; // TODO
-	void afficherPlat(ostream & os) const;// TODO
-	double calculerApportNutritif() const; // TODO
+	virtual Plat * clone() const; // TODO DONE
+	void afficherPlat(ostream & os) const;// TODO DONE
+	virtual double calculerApportNutritif() const; // TODO DONE mais probleme de classe
 
 };
 #endif

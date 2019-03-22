@@ -22,7 +22,6 @@ public:
 	Plat( string_view nom = "inconnu", double prix = 0, double cout = 0);
 	Plat(const Plat& platCopie); //Constructeur par copie pour utiliser dans clone de plat
 
-
     // destructeur
 	virtual ~Plat(); // TODO avoir un destructeur virtuel
 	//getters 
@@ -39,7 +38,6 @@ public:
     virtual Plat* clone () const; // TODO DONE
 	bool operator < (const Plat& plat) const;
     virtual void afficherPlat(ostream& os) const; // TODO DONE vistual car utiliser dans les classe derivee
-
 
 protected:
 	string nom_;
