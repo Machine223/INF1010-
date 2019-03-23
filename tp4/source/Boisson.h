@@ -19,6 +19,7 @@ class Boisson : public Taxable // TODO
     double getPrix () const;
 	void setTaxe() override; // Avoir
 	double getTaxe()const override; // A voir
+
 	protected:
     string nom_;
     double prix_;

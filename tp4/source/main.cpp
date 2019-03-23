@@ -123,7 +123,7 @@ int main()
          cout << "polyFodd gagne plus d'argent" << endl;
                         
        
-        // creer des plats vŽgŽ et des boissons
+        // creer des plats vege et des boissons
     vector<Taxable *> listeTaxable;
     listeTaxable.push_back(new Boisson("coke",2.2));
     listeTaxable.push_back(new PlatVege("Saucisse",7.2));

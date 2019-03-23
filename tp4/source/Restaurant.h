@@ -40,7 +40,7 @@ public:
 	string getNom() const;
 	TypeMenu getMoment() const;
 	double getFraisLivraison(int index) const;
-       double getChiffreAffaire();
+    double getChiffreAffaire();
 
 	// Autres methodes.
 
