@@ -1,7 +1,7 @@
 /*
 INF1010 – PROGRAMMATION ORIENTEE OBJET
 Travail pratique No. 4
-file:    plat.h
+file:    plat.cpp
 Auteur: ABDELKADER ZOBIRI 1891451 - Abderrahim Ammour 1924705
 Date: 25 mars 2019
 Description : Ce code contient les fonctions déclarées dans Plat.h
@@ -16,9 +16,7 @@ using namespace std;
 
 Plat::Plat(string_view nom, double prix, double cout) : nom_(nom), prix_(prix), cout_(cout) {
 }
-Plat::~Plat()
-{
-}
+Plat::~Plat() {}
 //getters 
 
 string Plat::getNom() const {
@@ -47,7 +45,7 @@ bool Plat::operator < (const Plat& plat) const
 }
 
 /**********************************************************************************
-*Fonction : afficherPlat
+*Fonction : Plat::afficherPlat
 *Description : Methode permettant d'affiche les attributs du plat
 *Parametres : ostream& os
 *Retour : aucun
@@ -63,8 +61,8 @@ double Plat::getPrixRevient()
 }
 
 /**********************************************************************************
-*Fonction : clone
-*Description : Methode permettant de de faire une copier l'objet 
+*Fonction : Plat::clone
+*Description : Methode permettant de faire une copier l'objet 
 *Parametres : aucun
 *Retour : (Plat*) retourne un objet alloué dynamiquement 
 ***********************************************************************************/
