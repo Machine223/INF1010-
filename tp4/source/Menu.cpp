@@ -34,7 +34,7 @@ Plat* Menu::allouerPlat(Plat* plat) {
 }
 
 
-Menu::Menu(const Menu & menu) : type_(menu.type_)
+Menu::Menu(const Menu & menu) 
 {
 	//TODO
 	if (this != &menu) {
@@ -47,8 +47,7 @@ Menu::Menu(const Menu & menu) : type_(menu.type_)
 }
 
 Menu & Menu::operator=(const Menu & menu)
-{
-        //TODO
+{	 //TODO
 	if (this != &menu) {
 		type_ = menu.type_;
 
@@ -135,14 +134,13 @@ Plat* Menu::lirePlatDe(LectureFichierEnSections& fichier)
 
 ostream& operator<<(ostream& os, const Menu& menu)
 {   
-    
+
 	for (unsigned i = 0; i < menu.listePlats_.size(); ++i) {
 		menu.listePlats_[i]->afficherPlat(os);
 	}
-	os << endl << "MENU  ENTIEREMENT VEGETERIEN " << endl;
+	os << endl << "MENU ENTIEREMENT VEGETARIEN " << endl;
 	for (unsigned i = 0; i < menu.listePlatsVege_.size(); ++i) {
 		menu.listePlatsVege_[i]->afficherVege(os);
 	}
 	return os;
-
 }

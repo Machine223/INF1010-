@@ -13,11 +13,11 @@ class PlatBioVege :
 {
 public:
 	PlatBioVege(string nom = "inconnu", double prix = 0, double cout = 0, double ecotaxe = 0,
-                double vitamines = 0, double proteines = 0, double mineraux = 0);// TODO
-        virtual ~PlatBioVege();
-        Plat * clone() const override; // TODO
-        void afficherPlat(ostream & os) const override;// TODO
-        double calculerApportNutritif() const override; // TODO
+	double vitamines = 0, double proteines = 0, double mineraux = 0);// TODO
+	virtual ~PlatBioVege();
+	Plat * clone() const override; // TODO
+	void afficherPlat(ostream & os) const override;// TODO
+	double calculerApportNutritif() const override; // TODO
 
 };
 #endif

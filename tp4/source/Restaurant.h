@@ -25,7 +25,7 @@ public:
 	Restaurant();
 	Restaurant(const string& nomFichier, string_view nom, TypeMenu moment);
 	Restaurant(const Restaurant& autre) = delete;  //? Le programme ne fait jamais de copie de restaurant,
-                                                   //donc cette methode n"est jamais cre par dfaut par le compilateur
+                                                   //donc cette methode n"est jamais creer par dfaut par le compilateur
     
 	// Destructeur.
 	~Restaurant();
