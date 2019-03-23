@@ -11,13 +11,15 @@
 #include <string>
 #include <string_view>
 using namespace std;
-class Boisson  // TODO
+class Boisson : public Taxable // TODO
 {
  public:
     Boisson (string_view nom, double prix);
     string_view getNom() const;
     double getPrix () const;
-protected:
+	void setTaxe() override; // Avoir
+	double getTaxe()const override; // A voir
+	protected:
     string nom_;
     double prix_;
     double taxe_;

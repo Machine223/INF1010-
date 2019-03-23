@@ -19,7 +19,7 @@ public:
 	ZoneHabitation getAdresseCode() const;
 
 	//Autres Fonctions
-    void afficherClient(ostream & os) const;// TODO
+    void afficherClient(ostream & os) const override;// TODO
 	string getAdressCodeString() const;
     double getReduction(const Restaurant & res, double montant, bool estLivraison); //TODO
 

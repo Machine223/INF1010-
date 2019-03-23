@@ -15,8 +15,7 @@ Menu::Menu() :
 {
 }
 
-Menu::Menu(string fichier, TypeMenu type) :
-	type_{type}
+Menu::Menu(string fichier, TypeMenu type) :type_{type}
 {
 	lireMenu(fichier); 
 }
@@ -24,6 +23,10 @@ Menu::Menu(string fichier, TypeMenu type) :
 Menu::~Menu()
 {
 	//TODO
+	for (int i = 0; i < listePlats_.size(); i++)
+		delete listePlats_[i];
+	listePlatsVege_.clear();
+	listePlats_.clear();
 }
 
 Plat* Menu::allouerPlat(Plat* plat) {
@@ -34,12 +37,29 @@ Plat* Menu::allouerPlat(Plat* plat) {
 Menu::Menu(const Menu & menu) : type_(menu.type_)
 {
 	//TODO
-  
+	if (this != &menu) {
+		type_ = menu.type_;
+		for (int i = 0; i < menu.listePlats_.size(); i++)
+			listePlats_.push_back(allouerPlat(menu.listePlats_[i]));
+		for (int i = 0; i < menu.listePlatsVege_.size(); i++)
+			listePlatsVege_.push_back(dynamic_cast<Vege*>(menu.listePlatsVege_[i])); 
+	}
 }
 
 Menu & Menu::operator=(const Menu & menu)
 {
         //TODO
+	if (this != &menu) {
+		type_ = menu.type_;
+
+		for (int i = 0; i < listePlats_.size(); i++)
+			delete listePlats_[i];
+		for (int i = 0; i < menu.listePlats_.size(); i++)
+			listePlats_.push_back(allouerPlat(menu.listePlats_[i]));
+		for (int i = 0; i < menu.listePlatsVege_.size(); i++)
+			listePlatsVege_.push_back(dynamic_cast<Vege*>(menu.listePlatsVege_[i])); 
+	}
+	return *this;
 }
 
 // Getters.
@@ -53,6 +73,10 @@ vector<Plat*> Menu::getListePlats() const
 
 Menu& Menu::operator+=(owner<Plat*> plat) {
         //TODO
+	listePlats_.push_back(plat);
+	if (dynamic_cast<Vege*>(plat) != nullptr)
+		listePlatsVege_.push_back(dynamic_cast<Vege*>(plat));
+	return *this;
 }
 
 void Menu::lireMenu(const string& nomFichier) {
@@ -111,5 +135,14 @@ Plat* Menu::lirePlatDe(LectureFichierEnSections& fichier)
 
 ostream& operator<<(ostream& os, const Menu& menu)
 {   
-        //TODO
+    
+	for (unsigned i = 0; i < menu.listePlats_.size(); ++i) {
+		menu.listePlats_[i]->afficherPlat(os);
+	}
+	os << endl << "MENU  ENTIEREMENT VEGETERIEN " << endl;
+	for (unsigned i = 0; i < menu.listePlatsVege_.size(); ++i) {
+		menu.listePlatsVege_[i]->afficherVege(os);
+	}
+	return os;
+
 }

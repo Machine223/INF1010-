@@ -4,8 +4,6 @@
 */
 #include "Vege.h"
 
-
-
 Vege::Vege(string nom, double vitamines, double proteines, double mineraux): nom_(nom),vitamines_(vitamines), proteines_(proteines), mineraux_(mineraux)
 {
 }
@@ -40,13 +38,6 @@ void Vege::setMineraux(double mineraux)
 	mineraux_ = mineraux;
 }
 void Vege::afficherVege(ostream & os) const
-{   
-	os << "/t vitamines " << mineraux_ << " Proteines" << proteines_ << " Mineraux" << mineraux_;
+{   //TODO
+	os << "PLAT VEGE " << nom_ << "\t vitamines " << vitamines_ << " Proteines " << proteines_ << " Mineraux " << mineraux_ << endl;
 }
-
-double Vege::calculerApportNutritif() const
-{
-	return (vitamines_ * proteines_ / mineraux_) * RAPPORT_NUTRITIF; // pas sur a verifier!
-}
-
-
