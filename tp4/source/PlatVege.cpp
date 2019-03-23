@@ -18,11 +18,10 @@ Plat* PlatVege::clone()const
 }
 
 
-void PlatVege::afficherPlat(ostream & os) const
+void PlatVege::afficherPlat(ostream & os) const 
 {   //TODO
 	Plat::afficherPlat(os);
-	// "PLAT VEGE" 
-	Vege::afficherVege(os);
+	Vege::afficherVege(os); 	// "PLAT VEGE" 
 	os << "(Apport nutritif:" << calculerApportNutritif() << " mg)" << endl;
 }
 

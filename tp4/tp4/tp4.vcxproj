@@ -18,6 +18,46 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\source\polyFood.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\Boisson.h" />
+    <ClInclude Include="..\source\Client.h" />
+    <ClInclude Include="..\source\ClientOccasionnel.h" />
+    <ClInclude Include="..\source\ClientPrestige.h" />
+    <ClInclude Include="..\source\ClientRegulier.h" />
+    <ClInclude Include="..\source\debogageMemoire.hpp" />
+    <ClInclude Include="..\source\def.h" />
+    <ClInclude Include="..\source\LectureFichierEnSections.h" />
+    <ClInclude Include="..\source\Menu.h" />
+    <ClInclude Include="..\source\Plat.h" />
+    <ClInclude Include="..\source\PlatBio.h" />
+    <ClInclude Include="..\source\PlatBioVege.h" />
+    <ClInclude Include="..\source\PlatVege.h" />
+    <ClInclude Include="..\source\pointers.h" />
+    <ClInclude Include="..\source\Restaurant.h" />
+    <ClInclude Include="..\source\Table.h" />
+    <ClInclude Include="..\source\Taxable.h" />
+    <ClInclude Include="..\source\Vege.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\Boisson.cpp" />
+    <ClCompile Include="..\source\Client.cpp" />
+    <ClCompile Include="..\source\ClientOccasionnel.cpp" />
+    <ClCompile Include="..\source\ClientPrestige.cpp" />
+    <ClCompile Include="..\source\ClientRegulier.cpp" />
+    <ClCompile Include="..\source\LectureFichierEnSections.cpp" />
+    <ClCompile Include="..\source\main.cpp" />
+    <ClCompile Include="..\source\Menu.cpp" />
+    <ClCompile Include="..\source\Plat.cpp" />
+    <ClCompile Include="..\source\PlatBio.cpp" />
+    <ClCompile Include="..\source\PlatBioVege.cpp" />
+    <ClCompile Include="..\source\PlatVege.cpp" />
+    <ClCompile Include="..\source\Restaurant.cpp" />
+    <ClCompile Include="..\source\Table.cpp" />
+    <ClCompile Include="..\source\Vege.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{5C35311F-8438-4201-B3FD-F65D8CA82786}</ProjectGuid>
@@ -118,46 +158,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\source\Boisson.cpp" />
-    <ClCompile Include="..\source\Client.cpp" />
-    <ClCompile Include="..\source\ClientOccasionnel.cpp" />
-    <ClCompile Include="..\source\ClientPrestige.cpp" />
-    <ClCompile Include="..\source\ClientRegulier.cpp" />
-    <ClCompile Include="..\source\LectureFichierEnSections.cpp" />
-    <ClCompile Include="..\source\main.cpp" />
-    <ClCompile Include="..\source\Menu.cpp" />
-    <ClCompile Include="..\source\Plat.cpp" />
-    <ClCompile Include="..\source\PlatBio.cpp" />
-    <ClCompile Include="..\source\PlatBioVege.cpp" />
-    <ClCompile Include="..\source\PlatVege.cpp" />
-    <ClCompile Include="..\source\Restaurant.cpp" />
-    <ClCompile Include="..\source\Table.cpp" />
-    <ClCompile Include="..\source\Vege.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\source\Boisson.h" />
-    <ClInclude Include="..\source\Client.h" />
-    <ClInclude Include="..\source\ClientOccasionnel.h" />
-    <ClInclude Include="..\source\ClientPrestige.h" />
-    <ClInclude Include="..\source\ClientRegulier.h" />
-    <ClInclude Include="..\source\debogageMemoire.hpp" />
-    <ClInclude Include="..\source\def.h" />
-    <ClInclude Include="..\source\LectureFichierEnSections.h" />
-    <ClInclude Include="..\source\Menu.h" />
-    <ClInclude Include="..\source\Plat.h" />
-    <ClInclude Include="..\source\PlatBio.h" />
-    <ClInclude Include="..\source\PlatBioVege.h" />
-    <ClInclude Include="..\source\PlatVege.h" />
-    <ClInclude Include="..\source\pointers.h" />
-    <ClInclude Include="..\source\Restaurant.h" />
-    <ClInclude Include="..\source\Table.h" />
-    <ClInclude Include="..\source\Taxable.h" />
-    <ClInclude Include="..\source\Vege.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\source\polyFood.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

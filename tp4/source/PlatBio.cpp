@@ -28,7 +28,7 @@ Plat * PlatBio:: clone () const
 }
 double PlatBio:: getPrixDeRevient()
 { //TODO
-	return (prix_ - cout_ + ecoTaxe_);
+	 return (Plat::getPrixRevient() + ecoTaxe_); // prix_ - cout_ + ecoTaxe_
 }
 
 void PlatBio::afficherPlat(ostream& os) const { 

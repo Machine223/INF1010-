@@ -1,28 +1,11 @@
 /*
-INF1010 – PROGRAMMATION ORIENTEE OBJET
-Travail pratique No. 4
-file:    main.cpp
-Thème: Polymorphisme, Héritage multiple
-Auteur: ABDELKADER ZOBIRI 1891451 - Abderrahim Ammour 1924705
-Date: 25 Mars 2019
-Ce code contient les tests de pour toutes les fonctions crées ainsi que la lecture de
-fichier et la gestion des objets.
-
-REPONSES AUX QUESTIONS
-1. Donner le diagramme de classe
-2. Quel est la différence entre une classe abstraite et une interface?
-
-	Une interface n'a aucune implémentation de ses méthodes, elle peut être considérée 
-	comme un ensemble de déclarations de méthodes. Une classe abstaite possede des methodes virtuel dites pures. 
-	En C ++, une interface peut être simulée en rendant toutes les méthodes virtuelles pure~~~.
-
 * Date : 25 février 2019
 * Auteur : AbdeB
-
 */
 /*La difference entre une classe abstraite et une interface c'est que la classe abstraite est une classe qui contient au moins 
 une méthode virtuelle pure. Cependant, une interface ne contient que des méthodes virtuelles pures. Du coup, On peut dire que 
-une interface est une classe abstraite dans laquelle il n'ya que des méthodes virtuelles pures*/
+une interface est une classe abstraite dans laquelle il n'ya que des méthodes virtuelles pures. Ainsi, Une interface
+ne contient ni de constructeur ni de destructeur*/
 
 #include "Restaurant.h"
 #include "ClientOccasionnel.h"
