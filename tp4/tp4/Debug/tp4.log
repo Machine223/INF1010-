@@ -9,8 +9,6 @@ c:\users\machine\documents\inf1010\inf1010-\tp4\source\menu.cpp(64): warning C40
 c:\users\machine\documents\inf1010\inf1010-\tp4\source\menu.cpp(69): warning C4018: '<' : incompatibilité signed/unsigned
   Plat.cpp
   PlatBio.cpp
-  PlatBioVege.cpp
-  PlatVege.cpp
   Restaurant.cpp
   Table.cpp
   main.cpp

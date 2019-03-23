@@ -31,7 +31,7 @@ void PlatBio::setEcoTaxe(double ecoTaxe)
 *Fonction : PlatBio::clone
 *Description : Methode permettant de faire une copier l'objet
 *Parametres : aucun
-*Retour : (PlatBio*) retourne un objet alloué dynamiquement
+*Retour : (Plat*) retourne un objet alloué dynamiquement
 ***********************************************************************************/
 Plat * PlatBio:: clone () const
 {
