@@ -11,7 +11,6 @@
 class ClientPrestige : public ClientRegulier
 {
 public:
-	//Constructeur
 	ClientPrestige();
 	ClientPrestige(string_view nom, string_view prenom, int tailleGroupe, 
 		           int nbPoints, ZoneHabitation adresse);// TODO
@@ -26,6 +25,7 @@ public:
 
 private:
 	ZoneHabitation adresse_;
+
 };
 
 #endif

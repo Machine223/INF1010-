@@ -9,21 +9,18 @@ ClientOccasionnel::ClientOccasionnel(string_view nom, string_view prenom, int ta
 }
 ClientOccasionnel::~ClientOccasionnel(){}
 
-// Client occasionnel n a aucun point
 int ClientOccasionnel::getNbPoints() const
 {
-	return 0;
+	return 0; // Client occasionnel n a aucun point
 }
 
-// Affichage de client
 void ClientOccasionnel::afficherClient(ostream & os) const
 {
-	Client::afficherClient(os); 
+	Client::afficherClient(os); // Affichage de client
 
 }
-// Aucune reduction au client occasionnel
 double ClientOccasionnel::getReduction(const Restaurant & res, double montant, bool estLivraison)
 {
-	return 0.0; 
+	return 0.0; // Aucune reduction au client occasionnel
 }
 

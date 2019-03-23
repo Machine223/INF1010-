@@ -25,7 +25,7 @@ public:
 	Restaurant();
 	Restaurant(const string& nomFichier, string_view nom, TypeMenu moment);
 	Restaurant(const Restaurant& autre) = delete;  //? Le programme ne fait jamais de copie de restaurant,
-                                                   //donc cette methode n"est jamais creer par défaut par le compilateur
+                                                   //donc cette methode n"est jamais créée par défaut par le compilateur
     
 	// Destructeur.
 	~Restaurant();
@@ -40,7 +40,7 @@ public:
 	string getNom() const;
 	TypeMenu getMoment() const;
 	double getFraisLivraison(int index) const;
-    double getChiffreAffaire();
+       double getChiffreAffaire();
 
 	// Autres methodes.
 

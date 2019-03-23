@@ -19,9 +19,8 @@ public:
 	void setVitamines(double vitamines);
 	void setProteines(double proteines);
 	void setMineraux(double mineraux);
-
-    void afficherVege(ostream & os)const; // TODO DONE
-    virtual double calculerApportNutritif() const = 0;//TODO DONE voir si mettre virtuelle pure ou pas (si oui ajouter obligatoire =0) pour etre classe abstrait
+    void afficherVege(ostream & os)const; // TODO
+    virtual double calculerApportNutritif() const = 0;//TODO
 
 protected: 
 	double vitamines_;
