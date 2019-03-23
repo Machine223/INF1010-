@@ -12,8 +12,10 @@ class Restaurant;
 class ClientRegulier : public Client
 {
  public:
+	//Constructeur
 	ClientRegulier();
 	ClientRegulier(string_view nom, string_view prenom, int tailleGroupe, int nbPoints);// TODO
+	//Destructeur
     virtual ~ClientRegulier();
 	//Accesseurs
      int getNbPoints() const ;
@@ -23,6 +25,6 @@ class ClientRegulier : public Client
     void afficherClient(ostream & os) const override; // TODO
     double getReduction(const Restaurant & res, double montant , bool estLivraison) override;// TODO
 protected:
-	int nbPoints_;
+	int nbPoints_; //nombre de points de fidélité.
 };
 #endif
