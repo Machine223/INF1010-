@@ -38,7 +38,7 @@ public:
     // setters
     void setTable(Table * ta);
 
-	//affichage
+	//Autres methodes virtuelle pure
 	virtual int getNbPoints() const =0;
 	virtual void afficherClient(ostream & os) const =0; // TODO
 	virtual double getReduction(const Restaurant & res, double montant, bool estLivraison) = 0;
