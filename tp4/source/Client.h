@@ -15,11 +15,13 @@ class Table;
 class Client
 {
 public:
+
 	// Constructeur 
-	virtual Client() =0;
-	virtual Client(string_view nom, string_view prenom, int tailleGroupe) =0;
+	virtual Client();
+	virtual Client(string_view nom, string_view prenom, int tailleGroupe);
 	// Destructeur
     virtual ~Client(){};
+
 
 	//getters
 	int getTailleGroupe() const;
@@ -40,6 +42,7 @@ protected:
 	string prenom_;
 	int tailleGroupe_;
 	Table* tableOccupee_;
+
 };
 #endif
 

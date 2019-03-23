@@ -14,15 +14,14 @@ class ClientRegulier : public Client
  public:
 	ClientRegulier();
 	ClientRegulier(string_view nom, string_view prenom, int tailleGroupe, int nbPoints);// TODO
-    ~ClientRegulier();
+    virtual ~ClientRegulier();
 	//Accesseurs
      int getNbPoints() const ;
 
 	//Autres Methodes
 	void augmenterNbPoints(int bonus);
-    void afficherClient(ostream & os) const; // TODO
-    double getReduction(const Restaurant & res, double montant , bool estLivraison);// TODO
-//
+    void afficherClient(ostream & os) const override; // TODO
+    double getReduction(const Restaurant & res, double montant , bool estLivraison) override;// TODO
 protected:
 	int nbPoints_;
 };

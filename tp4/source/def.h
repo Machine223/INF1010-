@@ -2,7 +2,6 @@
 #define DEF_H
 #include<string_view>
 using namespace std;
-//Le fichier def.h contient toutes les constantes et les énumérations des classes.
 enum class TypeMenu{ Matin, Midi, Soir,  first_= Matin, last_= Soir };
 inline static constexpr string_view nomsDesTypesDeMenu[]    = { "Matin", "Midi", "Soir" };
 inline static constexpr string_view entetesDesTypesDeMenu[] = { "-MATIN", "-MIDI", "-SOIR" }; // Pour le format du fichier.
