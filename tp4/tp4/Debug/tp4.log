@@ -1,1 +1,10 @@
-﻿  tp4.vcxproj -> C:\Users\Machine\Documents\INF1010\INF1010-\tp4\tp4\Debug\tp4.exe
+﻿  Menu.cpp
+c:\users\machine\documents\inf1010\inf1010-\tp4\source\menu.cpp(29): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\machine\documents\inf1010\inf1010-\tp4\source\menu.cpp(44): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\machine\documents\inf1010\inf1010-\tp4\source\menu.cpp(72): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\machine\documents\inf1010\inf1010-\tp4\source\menu.cpp(78): warning C4018: '<' : incompatibilité signed/unsigned
+  main.cpp
+c:\users\machine\documents\inf1010\inf1010-\tp4\source\main.cpp(51): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\machine\documents\inf1010\inf1010-\tp4\source\main.cpp(78): warning C4018: '<' : incompatibilité signed/unsigned
+  Génération de code en cours...
+  tp4.vcxproj -> C:\Users\Machine\Documents\INF1010\INF1010-\tp4\tp4\Debug\tp4.exe

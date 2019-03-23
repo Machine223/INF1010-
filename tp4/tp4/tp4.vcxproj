@@ -58,6 +58,9 @@
     <ClCompile Include="..\source\Table.cpp" />
     <ClCompile Include="..\source\Vege.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{5C35311F-8438-4201-B3FD-F65D8CA82786}</ProjectGuid>
