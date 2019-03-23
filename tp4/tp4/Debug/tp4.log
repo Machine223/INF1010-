@@ -1,23 +1,2 @@
-﻿  Boisson.cpp
-  Client.cpp
-  ClientOccasionnel.cpp
-  ClientPrestige.cpp
-  ClientRegulier.cpp
-  LectureFichierEnSections.cpp
-  main.cpp
-c:\users\machine\documents\inf1010\inf1010-\tp4\source\main.cpp(40): warning C4018: '<' : incompatibilité signed/unsigned
-c:\users\machine\documents\inf1010\inf1010-\tp4\source\main.cpp(67): warning C4018: '<' : incompatibilité signed/unsigned
-  Menu.cpp
-c:\users\machine\documents\inf1010\inf1010-\tp4\source\menu.cpp(26): warning C4018: '<' : incompatibilité signed/unsigned
-c:\users\machine\documents\inf1010\inf1010-\tp4\source\menu.cpp(42): warning C4018: '<' : incompatibilité signed/unsigned
-c:\users\machine\documents\inf1010\inf1010-\tp4\source\menu.cpp(64): warning C4018: '<' : incompatibilité signed/unsigned
-c:\users\machine\documents\inf1010\inf1010-\tp4\source\menu.cpp(69): warning C4018: '<' : incompatibilité signed/unsigned
-  Plat.cpp
-  PlatBio.cpp
-  PlatBioVege.cpp
-  PlatVege.cpp
-  Restaurant.cpp
-  Table.cpp
-  Vege.cpp
-  Génération de code en cours...
+﻿  Plat.cpp
   tp4.vcxproj -> C:\Users\Machine\Documents\INF1010\INF1010-\tp4\tp4\Debug\tp4.exe
