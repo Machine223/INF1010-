@@ -13,9 +13,9 @@ Répondez aux questions
 	Voir fichier PDF.
 2. Quel est la différence entre une classe abstraite et une interface?
 	La difference entre une classe abstraite et une interface c'est que la classe abstraite est une classe qui contient au moins 
-	une méthode virtuelle pure. Cependant, une interface ne contient que des méthodes virtuelles pures. Du coup, On peut dire que 
-	une interface est une classe abstraite dans laquelle il n'ya que des méthodes virtuelles pures. Ainsi, Une interface
-	ne contient ni de constructeur ni de destructeur
+	une méthode virtuelle pure. Cependant, une interface ne contient que des méthodes virtuelles pures. Alors, nous pouvons 
+	dire que une interface est une classe abstraite dans laquelle il n'ya que des méthodes virtuelles pures. Ainsi,
+	Une interface ne contient ni de constructeur ni de destructeur
 */
 
 #include "Restaurant.h"
@@ -26,7 +26,7 @@ Répondez aux questions
 #include "Menu.h"
 #include "Boisson.h"
 #include "def.h"
-#include<vector>
+#include <vector>
 using namespace std;
 
 int main()

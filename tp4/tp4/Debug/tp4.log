@@ -1,15 +1,1 @@
-﻿  Client.cpp
-  ClientOccasionnel.cpp
-  ClientPrestige.cpp
-  ClientRegulier.cpp
-  Plat.cpp
-  PlatBio.cpp
-  PlatBioVege.cpp
-  PlatVege.cpp
-  Restaurant.cpp
-  Table.cpp
-  main.cpp
-c:\users\machine\documents\inf1010\inf1010-\tp4\source\main.cpp(51): warning C4018: '<' : incompatibilité signed/unsigned
-c:\users\machine\documents\inf1010\inf1010-\tp4\source\main.cpp(78): warning C4018: '<' : incompatibilité signed/unsigned
-  Génération de code en cours...
-  tp4.vcxproj -> C:\Users\Machine\Documents\INF1010\INF1010-\tp4\tp4\Debug\tp4.exe
+﻿  tp4.vcxproj -> C:\Users\Machine\Documents\INF1010\INF1010-\tp4\tp4\Debug\tp4.exe
