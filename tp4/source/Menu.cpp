@@ -1,6 +1,10 @@
 /*
-* Date : 25 février 2019
-* Auteur : AbdeB
+INF1010 – PROGRAMMATION ORIENTEE OBJET
+Travail pratique No. 4
+file:    Menu.cpp
+Auteur: ABDELKADER ZOBIRI 1891451 - Abderrahim Ammour 1924705
+Date: 25 mars 2019
+Description : Ce code contient les fonctions déclarées dans Menu.h
 */
 
 #include "Menu.h"
@@ -10,8 +14,7 @@ using namespace std;
 
 // Constructeurs.
 
-Menu::Menu() :
-	type_{TypeMenu::Matin}
+Menu::Menu() :type_{TypeMenu::Matin}
 {
 }
 
@@ -20,9 +23,9 @@ Menu::Menu(string fichier, TypeMenu type) :type_{type}
 	lireMenu(fichier); 
 }
 
+//Destructeur
 Menu::~Menu()
 {
-	//TODO
 	for (int i = 0; i < listePlats_.size(); i++)
 		delete listePlats_[i];
 	listePlatsVege_.clear();
@@ -33,18 +36,17 @@ Plat* Menu::allouerPlat(Plat* plat) {
     return plat->clone();
 }
 
-
+//Constructeur par copie
 Menu::Menu(const Menu & menu) 
 {
-	//TODO
 	if (this != &menu) {
 		type_ = menu.type_;
 		for (int i = 0; i < menu.listePlats_.size(); i++) //Voir diagramme de classe
-			if (dynamic_cast<PlatBioVege*>(menu.listePlats_[i])) { // On push dans les deux vecteurs
+			if (dynamic_cast<PlatBioVege*>(menu.listePlats_[i])) { // On push dans les deux vecteurs si le plat est Bio et Vege
 				listePlats_.push_back(dynamic_cast<PlatBioVege*>(allouerPlat(menu.listePlats_[i])));
 				listePlatsVege_.push_back(dynamic_cast<PlatBioVege*>(listePlats_[i]));
 			}
-			else if (dynamic_cast<PlatBio*>(menu.listePlats_[i]))
+			else if (dynamic_cast<PlatBio*>(menu.listePlats_[i])) // On push dans plats seulement si plat est Bio
 				listePlats_.push_back(dynamic_cast<PlatBio*>(allouerPlat(menu.listePlats_[i])));
 			else if (dynamic_cast<PlatVege*>(menu.listePlats_[i])) {  // On push dans les deux vecteurs
 				listePlats_.push_back(dynamic_cast<PlatVege*>(allouerPlat(menu.listePlats_[i])));
@@ -55,45 +57,55 @@ Menu::Menu(const Menu & menu)
 	}
 }
 
+
+/**********************************************************************************
+*Fonction : Menu::operator=
+*Description : Operateur d'affectation
+*Parametres : const Menu & menu
+*Retour : *this
+***********************************************************************************/
 Menu & Menu::operator=(const Menu & menu)
 {
-        //TODO
 	if (this != &menu) {
 		type_ = menu.type_;
 
 		for (int i = 0; i < listePlats_.size(); i++)
 			delete listePlats_[i];
+
 		listePlats_.clear();
 		listePlatsVege_.clear();
 		
-		for (int i = 0; i < menu.listePlats_.size(); i++) //Voir diagramme de classe
-			if (dynamic_cast<PlatBioVege*>(menu.listePlats_[i])){
+		for (int i = 0; i < menu.listePlats_.size(); i++)			//Voir diagramme de classe
+			if (dynamic_cast<PlatBioVege*>(menu.listePlats_[i])){	// On push dans les deux vecteurs si le plat est Bio et Vege
 				listePlats_.push_back(dynamic_cast<PlatBioVege*>(allouerPlat(menu.listePlats_[i])));
 				listePlatsVege_.push_back(dynamic_cast<PlatBioVege*>(listePlats_[i]));
 			}
-			else if (dynamic_cast<PlatBio*>(menu.listePlats_[i]))
+			else if (dynamic_cast<PlatBio*>(menu.listePlats_[i]))	// On push dans plats seulement si plat est Bio
 				listePlats_.push_back(dynamic_cast<PlatBio*>(allouerPlat(menu.listePlats_[i])));
 			else if (dynamic_cast<PlatVege*>(menu.listePlats_[i])) {
 				listePlats_.push_back(dynamic_cast<PlatVege*>(allouerPlat(menu.listePlats_[i])));
 				listePlatsVege_.push_back(dynamic_cast<PlatVege*>(listePlats_[i]));
 			}
 			else 
-				listePlats_.push_back(allouerPlat(menu.listePlats_[i])); // Il s'agit  d'un plat ordinaire
+				listePlats_.push_back(allouerPlat(menu.listePlats_[i])); // Il s'agit d'un plat ordinaire
 	}
 	return *this;
 }
 
 // Getters.
-
 vector<Plat*> Menu::getListePlats() const
 {
 	return listePlats_;
 }
 
-// Autres methodes.
-
+/**********************************************************************************
+*Fonction : Menu::operator+=
+*Description : Operateur d'addition et d'affectation
+*Parametres : owner<Plat*> plat
+*Retour : *this
+***********************************************************************************/
 Menu& Menu::operator+=(owner<Plat*> plat) {
-        //TODO
+   
 	if (dynamic_cast<Plat*>(plat) != nullptr) // s'assurer que le pointeur passée en parametre s'agit bien d'un plat
 	{
 
@@ -141,6 +153,7 @@ Plat* Menu::trouverPlat(string_view nom) const
 
 	return nullptr; 
 }
+
 Plat* Menu::lirePlatDe(LectureFichierEnSections& fichier)
 {
     auto lectureLigne = fichier.lecteurDeLigne();
@@ -168,14 +181,18 @@ Plat* Menu::lirePlatDe(LectureFichierEnSections& fichier)
 }
 
 // Fonctions globales.
-
+/**********************************************************************************
+*Fonction : Menu::operator<<
+*Description : Surcharge de l'operateur << pour afficher tout le menu et le menu vegetarien
+*Parametres : ostream& os, const Menu& menu
+*Retour : *this
+***********************************************************************************/
 ostream& operator<<(ostream& os, const Menu& menu)
 {   
-    
 	for (unsigned i = 0; i < menu.listePlats_.size(); ++i) {
 		menu.listePlats_[i]->afficherPlat(os);
 	}
-	os << endl << "MENU  ENTIEREMENT VEGETERIEN " << endl;
+	os << endl << "MENU ENTIEREMENT VEGETARIEN " << endl;
 	for (unsigned i = 0; i < menu.listePlatsVege_.size(); ++i) {
 		menu.listePlatsVege_[i]->afficherVege(os);
 	}

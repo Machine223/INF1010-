@@ -1,6 +1,10 @@
 /*
-* Date : 25 février 2019
-* Auteur : AbdeB
+INF1010 – PROGRAMMATION ORIENTEE OBJET
+Travail pratique No. 4
+file:    Menu.h
+Auteur: ABDELKADER ZOBIRI 1891451 - Abderrahim Ammour 1924705
+Date: 25 mars 2019
+Description : Ce code contient les déclarations des fonctions implémenté dans Menu.cpp
 */
 
 #ifndef MENU_H
@@ -15,24 +19,24 @@
 #include <fstream>
 #include <vector>
 
-using std::vector;  //? On ne devrait normalement pas faire de "using" global dans un .h, mais c'est accepté en INF1010.
+using std::vector;  // On ne devrait normalement pas faire de "using" global dans un .h, mais c'est accepté en INF1010.
 
 class Menu {
 public: 
 	// Constructeurs.
-
 	Menu(); 
 	Menu(string fichier, TypeMenu type);
 	Menu(const Menu& menu);// TODO
-	~Menu(); // TODO
-	// Getters.
 
+	//Destructeur
+	~Menu(); // TODO
+
+	// Getters.
 	vector<Plat*> getListePlats() const;
 
 	// Autres méthodes.
-
 	Plat* trouverPlat(string_view nom) const;
-        Plat* allouerPlat(Plat* plat);
+	Plat* allouerPlat(Plat* plat);
 	Menu& operator+=(owner<Plat*> plat);  // TODO //? Le parametre est indique "owner" pour montrer que cette methode prend possession du pointeur qui lui est passe, mais owner<Plat*> est equivalent à Plat*; voir pointers.h .
 	Menu& operator=(const Menu& menu); // TODO
 	void lireMenu(const string& fichier); 
