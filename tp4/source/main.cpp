@@ -9,7 +9,12 @@ Ce code contient les tests de pour toutes les fonctions crées ainsi que la lectu
 fichier et la gestion des objets.
 
 REPONSES AUX QUESTIONS
+1. Donner le diagramme de classe
+2. Quel est la différence entre une classe abstraite et une interface?
 
+	Une interface n'a aucune implémentation de ses méthodes, elle peut être considérée 
+	comme un ensemble de déclarations de méthodes. Une classe abstaite possede des methodes virtuel dites pures. 
+	En C ++, une interface peut être simulée en rendant toutes les méthodes virtuelles pure~~~.
 */
 
 

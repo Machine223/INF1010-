@@ -35,8 +35,19 @@ void Client:: setTable(Table * ta)
 Table * Client:: getTable() const
 { return tableOccupee_;}
 
-void Client::afficherClient(ostream & os) const
-{ // TODO
+//il n’y a aucune implémentation de cette méthode dans la classe Client.
+int Client::getNbPoints() const {}
 
+//écrire les instructions qui affiche le prénom, le nom du client et la table 
+//si le pointeur de Table est différent de nullptr
+void Client::afficherClient(ostream & os) const
+{ 
+	os << prenom_ << " " << nom_;
+	if (tableOccupee_ != nullptr)
+		os << getTable();
+	else
+		os << endl;
 }
+
+
 
