@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Boisson">
+    <Position X="22" Y="5.75" Width="2" />
+    <InheritanceLine Type="Taxable" ManuallyRouted="true">
+      <Path>
+        <Point X="19.375" Y="1.809" />
+        <Point X="19.375" Y="3.071" />
+        <Point X="23" Y="3.071" />
+        <Point X="23" Y="5.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAGQAFAAAAgAAAAAAAgAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Machine\Documents\INF1010\INF1010-\tp4\source\Boisson.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Client">
+    <Position X="8.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAERAAACEAAAQAIAAAAAAAAAAAggAABAgAAAoAAQ=</HashCode>
+      <FileName>C:\Users\Machine\Documents\INF1010\INF1010-\tp4\source\Client.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientOccasionnel">
+    <Position X="7" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAACAAAAAAIAAAAAAAAAAAAEAAAAAAAAIAAA=</HashCode>
+      <FileName>C:\Users\Machine\Documents\INF1010\INF1010-\tp4\source\ClientOccasionnel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientPrestige">
+    <Position X="9.75" Y="8.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACACAAAAAAgAAAAAAAAAQAAAAIAAACAAIAAA=</HashCode>
+      <FileName>C:\Users\Machine\Documents\INF1010\INF1010-\tp4\source\ClientPrestige.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientRegulier">
+    <Position X="9.75" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAIAAAAIgAAAAAAAAAAABAAAoAAA=</HashCode>
+      <FileName>C:\Users\Machine\Documents\INF1010\INF1010-\tp4\source\ClientRegulier.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LectureFichierEnSections">
+    <Position X="0.5" Y="8.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAQAAAAAEAAAABAAAAACAAAIAACAAAAAAg=</HashCode>
+      <FileName>C:\Users\Machine\Documents\INF1010\INF1010-\tp4\source\LectureFichierEnSections.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Menu">
+    <Position X="4.25" Y="7.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ABABAAAAACBAAAAAAAAABQIAAQAIAAAEAAAgAAAAIQA=</HashCode>
+      <FileName>C:\Users\Machine\Documents\INF1010\INF1010-\tp4\source\Menu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plat">
+    <Position X="14.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAIFEAAAEAAAAgAAgAACAAAAAAAgAgAAAkEAIAAAA=</HashCode>
+      <FileName>C:\Users\Machine\Documents\INF1010\INF1010-\tp4\source\Plat.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlatBio">
+    <Position X="13.25" Y="5.75" Width="2.25" />
+    <InheritanceLine Type="Plat" ManuallyRouted="true">
+      <Path>
+        <Point X="15.75" Y="4.41" />
+        <Point X="15.75" Y="4.817" />
+        <Point X="14.375" Y="4.817" />
+        <Point X="14.375" Y="5.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>ACAACAAAEAAAAAACAAIAAAAAAAABAAAgAAAAEAAAAAA=</HashCode>
+      <FileName>C:\Users\Machine\Documents\INF1010\INF1010-\tp4\source\PlatBio.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlatBioVege">
+    <Position X="16" Y="10.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAACgAAAAEAAAACA=</HashCode>
+      <FileName>C:\Users\Machine\Documents\INF1010\INF1010-\tp4\source\PlatBioVege.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlatVege">
+    <Position X="16.25" Y="6" Width="2.5" />
+    <InheritanceLine Type="Plat" ManuallyRouted="true">
+      <Path>
+        <Point X="15.75" Y="4.41" />
+        <Point X="15.75" Y="5.375" />
+        <Point X="17.5" Y="5.375" />
+        <Point X="17.5" Y="6" />
+      </Path>
+    </InheritanceLine>
+    <InheritanceLine Type="Taxable" ManuallyRouted="true">
+      <Path>
+        <Point X="19.375" Y="1.809" />
+        <Point X="19.375" Y="3.382" />
+        <Point X="17.5" Y="3.382" />
+        <Point X="17.5" Y="6" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAEQAAAAAAgAAAAIAAAAAAAAAAAAAAAgCAAAEAAAAAA=</HashCode>
+      <FileName>C:\Users\Machine\Documents\INF1010\INF1010-\tp4\source\PlatVege.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Restaurant">
+    <Position X="0.5" Y="0.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>IKBgIEhAgARAAIAAAAAIAYBAAAIAFgAEAAAggIAAEAA=</HashCode>
+      <FileName>C:\Users\Machine\Documents\INF1010\INF1010-\tp4\source\Restaurant.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Table">
+    <Position X="4" Y="0.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AiAhIAAAAAQAAIAQACAAQAAAIAEgAAAAAAEggAAAAoA=</HashCode>
+      <FileName>C:\Users\Machine\Documents\INF1010\INF1010-\tp4\source\Table.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxable">
+    <Position X="18.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Machine\Documents\INF1010\INF1010-\tp4\source\Taxable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vege">
+    <Position X="19.25" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAEEAAAAAAIAIAABAAEAAACAAEAAAAAAAAAQEBAA=</HashCode>
+      <FileName>C:\Users\Machine\Documents\INF1010\INF1010-\tp4\source\Vege.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9.13" />
+</ClassDiagram>
