@@ -34,6 +34,7 @@ Restaurant::~Restaurant()
 	delete menuMatin_;
 	delete menuMidi_;
 	delete menuSoir_;
+	//est ce que cest bon
 	for (Table* table : tables_)
 		delete table;
 }
@@ -52,7 +53,8 @@ void Restaurant::setNom(string_view nom)
 }
 
  void  Restaurant::setChiffreAffaire( double chiffre)
-{ chiffreAffaire_ = chiffre;
+{ 
+	 chiffreAffaire_ = chiffre;
 }
 // Getters.
 
@@ -213,6 +215,13 @@ void Restaurant::lireAdresses(const string& nomFichier)
 
 double Restaurant::getChiffreAffaire() {
 	return chiffreAffaire_;
+}
+
+GestionnaireTables * Restaurant::getTables() const
+{
+
+
+	return nullptr;
 }
 
 string getNomTypeMenu(TypeMenu typeMenu)

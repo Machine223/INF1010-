@@ -10,7 +10,7 @@ using namespace std;
 
 // Constructeurs.
 
-/*Menu::Menu() :
+Menu::Menu() :
 	type_{TypeMenu::Matin},
 	gestionnairePlats_{ new GestionnairePlats() }
 {
@@ -62,15 +62,15 @@ Menu & Menu::operator=(const Menu & menu)
 //}
 
 // déplacé dans gestionnairePlat
-/*void Menu::lireMenu(const string& nomFichier) {
+void Menu::lireMenu(const string& nomFichier) {
 	LectureFichierEnSections fichier{nomFichier};
 	fichier.allerASection(entetesDesTypesDeMenu[static_cast<int>(type_)]);
 	while (!fichier.estFinSection())
 		*this += lirePlatDe(fichier);
-}*/
+}
 
 // déplacé dans gestionnairePlat
-/*Plat* Menu::trouverPlatMoinsCher() const
+Plat* Menu::trouverPlatMoinsCher() const
 {
 	assert(!listePlats_.empty() && "La liste de plats de doit pas etre vide pour trouver le plat le moins cher.");
 	Plat* minimum = listePlats_[0];
@@ -79,20 +79,20 @@ Menu & Menu::operator=(const Menu & menu)
 			minimum = plat;
 
 	return minimum;
-}*/
+}
 
 // déplacé dans gestionnairePlat
-/*Plat* Menu::trouverPlat(string_view nom) const
+Plat* Menu::trouverPlat(string_view nom) const
 {
 	for (Plat* plat : listePlats_)
 		if (plat->getNom() == nom)
 			return plat; 
 
 	return nullptr; 
-}*/
+}
 
 // déplacé dans gestionnairePlat
-/*Plat* Menu::lirePlatDe(LectureFichierEnSections& fichier)
+Plat* Menu::lirePlatDe(LectureFichierEnSections& fichier)
 {
     auto lectureLigne = fichier.lecteurDeLigne();
     
@@ -116,14 +116,14 @@ Menu & Menu::operator=(const Menu & menu)
             return new Plat{nom, prix, coutDeRevient};
     }
     
-}*/
+}
 
 // Fonctions globales.
 
-/*ostream& operator<<(ostream& os, const Menu& menu)
+ostream& operator<<(ostream& os, const Menu& menu)
 {   
 	menu.gestionnairePlats_->afficherPlats(os);
-	/*for (size_t i = 0; i < menu.listePlats_.size(); ++i)
+	for (size_t i = 0; i < menu.listePlats_.size(); ++i)
 		 menu.listePlats_[i]->afficherPlat(os);
     os<<endl;
 	os << "MENU ENTIEREMENT VEGETARIEN\n";
@@ -134,4 +134,4 @@ Menu & Menu::operator=(const Menu & menu)
           menu.listePlatsVege_[i]->afficherVege(os);
 	}
 	return os;
-}*/
+}

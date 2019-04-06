@@ -15,12 +15,15 @@
 #include <map>
 #include <algorithm>
 #include <functional>
+#include <iterator>
+#include <vector>
 
 using namespace std;
 
-class GestionnairePlats // TODO : Ajouter l'héritage 
-{
+class GestionnairePlats: public GestionnaireGenerique<pair<string,Plat*>, map<string, Plat*>> 
+{											// TODO  le conteneur sous-jacent est  map<string, Plat*>
 public:
+
 	GestionnairePlats(const string& nomFichier, TypeMenu type); //TODO
 	GestionnairePlats(GestionnairePlats* gestionnaire); // TODO
 
@@ -28,7 +31,7 @@ public:
 
 	TypeMenu getType() const; // TODO
 
-	Plat* allouerPlat(Plat*); // TODO
+	Plat* allouerPlat(Plat*); // TODO crée un plat à partir d’un autre.
 
 	Plat* trouverPlatMoinsCher() const; // TODO
 	Plat* trouverPlatPlusCher() const; // TODO
