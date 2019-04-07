@@ -11,7 +11,7 @@
 //retourne la table dans le conteneur qui porte le id spécifié
 Table * GestionnaireTables::getTable(int id) const
 {
-	auto recherche = [&](Table* a, int id)->bool {
+	auto recherche = [&](Table* a)->bool {
 		return (a->getId() == id);
 	};
 
@@ -26,7 +26,7 @@ Table * GestionnaireTables::getMeilleureTable(int tailleGroupe) const
 	Table* meilleurTable = nullptr;
 	int nbPlace = 100; //nombre choisi qui sera le max possible
 	for (auto i : conteneur_) {
-		if (tailleGroupe <= i->getNbPlaces() && !i->estOccupee && nbPlace >= i->getNbPlaces()) {
+		if (tailleGroupe <= i->getNbPlaces() && !i->estOccupee() && nbPlace >= i->getNbPlaces()) {
 			meilleurTable = i;
 			nbPlace = i->getNbPlaces();
 		}

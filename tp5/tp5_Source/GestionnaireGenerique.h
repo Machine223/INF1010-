@@ -36,7 +36,7 @@ template<typename T, typename C>
 inline void GestionnaireGenerique<T, C>::ajouter(T t)
 {
 	//permet d’ajouter un élément au conteneur conteneur_ 
-	conteneur.insert(t);
+	conteneur_.insert(t);
 
 }
 

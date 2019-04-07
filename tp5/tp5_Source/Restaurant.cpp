@@ -13,30 +13,29 @@ using namespace std;
 Restaurant::Restaurant() :
 	Restaurant{"menu.txt", "Inconnu", TypeMenu::Matin}
 {
+	tables_ = new GestionnaireTables(); //ajout
 }
 
 Restaurant::Restaurant(const string& nomFichier, string_view nom, TypeMenu moment) :
-	nom_{nom},
-	momentJournee_{moment},
-	chiffreAffaire_{0},
-	menuMatin_{new Menu{nomFichier, TypeMenu::Matin}},
-	menuMidi_ {new Menu{nomFichier, TypeMenu::Midi }},
-	menuSoir_ {new Menu{nomFichier, TypeMenu::Soir }},
+	nom_{ nom },
+	momentJournee_{ moment },
+	chiffreAffaire_{ 0 },
+	menuMatin_{ new GestionnairePlats{nomFichier, TypeMenu::Matin} },
+	menuMidi_{ new GestionnairePlats{nomFichier, TypeMenu::Midi } },
+	menuSoir_{ new GestionnairePlats{nomFichier, TypeMenu::Soir } },
 	fraisLivraison_{}
 {
-	lireTables(nomFichier); 
+	tables_ = new GestionnaireTables();
+	tables_->lireTables(nomFichier);
 	lireAdresses(nomFichier);
 }
-
 // Destructeur.
 Restaurant::~Restaurant()
 {
 	delete menuMatin_;
 	delete menuMidi_;
 	delete menuSoir_;
-	//est ce que cest bon
-	for (Table* table : tables_)
-		delete table;
+	delete tables_;
 }
 
 
@@ -68,19 +67,19 @@ TypeMenu Restaurant::getMoment() const
 	return momentJournee_; 
 }
 
-double Restaurant::getFraisLivraison(int index) const
-{
-	return fraisLivraison_[index];
-}
+//double Restaurant::getFraisLivraison(int index) const
+//{
+//	return fraisLivraison_[index];
+//}
 
 
 // Autres methodes.
 
 void Restaurant::libererTable(int id)
 {
-	if (Table* table = getTable(id)) {
+	if (Table* table = tables_->getTable(id)) {
 		chiffreAffaire_ += table->getChiffreAffaire(); 
-		chiffreAffaire_ += calculerReduction(table->getClientPrincipal(), table->getChiffreAffaire(), id == tables_[INDEX_TABLE_LIVRAISON]->getId());
+		chiffreAffaire_ += calculerReduction(table->getClientPrincipal(), table->getChiffreAffaire(), id == tables_->getTable(INDEX_TABLE_LIVRAISON)->getId());
 		table->libererTable(); 
 	}
 }
@@ -95,16 +94,15 @@ ostream& operator<<(ostream& os, const Restaurant& restaurent)
 
 	os << "-Voici les tables : " << endl;
 
-	for (Table* table : restaurent.tables_)
-		os  << *table << endl;
+	restaurent.tables_->afficherTables(os);
 	os << endl;
 
 	os << "-Voici son menu : " << endl;
 	for (TypeMenu typeMenu : { TypeMenu::Matin, TypeMenu::Midi, TypeMenu::Soir }) {
-		Menu* menu = restaurent.getMenu(typeMenu);
-		os << getNomTypeMenu(typeMenu) << " : " << endl
-			<< *menu << endl
-			<< "Le plat le moins cher est : ";
+		GestionnairePlats* menu = restaurent.getMenu(typeMenu);
+		os << restaurent.getNomTypeMenu(typeMenu) << " : " << endl;
+		menu->afficherPlats(os);
+		os << "Le plat le moins cher est : ";
 		menu->trouverPlatMoinsCher()->afficherPlat(os);
 		os << endl;
 	}
@@ -113,8 +111,8 @@ ostream& operator<<(ostream& os, const Restaurant& restaurent)
 
 void Restaurant::commanderPlat(string_view nom, int idTable)
 {
-	if (Table* table = getTable(idTable); table && table->estOccupee())
-		if (Plat* plat = menuActuel()->trouverPlat(nom)) {
+	if (Table* table = tables_->getTable(idTable); table && table->estOccupee())
+		if (Plat* plat = menuActuel()->trouverPlat(string(nom))) {
 			table->commander(plat);
 			return;
 		}
@@ -126,26 +124,35 @@ bool Restaurant::operator <(const Restaurant& autre) const
 	return chiffreAffaire_ < autre.chiffreAffaire_;
 }
 
-void Restaurant::lireTables(const string& nomFichier)
-{
-	LectureFichierEnSections fichier{nomFichier};
-	fichier.allerASection("-TABLES");
-	while (!fichier.estFinSection()) {
-		int id, nbPlaces;
-		fichier >> id >> nbPlaces;
-		*this += new Table(id, nbPlaces);
-	}
-}
+//void Restaurant::lireTables(const string& nomFichier)
+//{
+//	LectureFichierEnSections fichier{nomFichier};
+//	fichier.allerASection("-TABLES");
+//	while (!fichier.estFinSection()) {
+//		int id, nbPlaces;
+//		fichier >> id >> nbPlaces;
+//		*this += new Table(id, nbPlaces);
+//	}
+//}
 
-Restaurant& Restaurant::operator+=(owner<Table*> table)
-{
-	tables_.push_back(table); 
-	return *this;
-}
+//Restaurant& Restaurant::operator+=(owner<Table*> table)
+//{
+//	tables_.push_back(table); 
+//	return *this;
+//}
 bool Restaurant::placerClients(Client* client)
 {
 	const int tailleGroupe = client->getTailleGroupe();
 	//TODO : trouver la table la plus adaptée pour le client. 
+	Table* table = tables_->getMeilleureTable(tailleGroupe);
+	if (table != nullptr) {
+		client->setTable(table);
+		table->placerClients(tailleGroupe);
+		table->setClientPrincipal(client);
+	}
+	else
+		return false;
+	return true;
 	//TODO : Si possible assigner la table au client sinon retourner false.
 }
 
@@ -153,12 +160,14 @@ bool Restaurant::livrerClient(Client* client, const vector<string>& commande)
 {
 	if (dynamic_cast<ClientPrestige*>(client)) {
 		// TODO: Placer le client principal a la table fictive en utilisant la classe GestionnaireTables.
-		// tables_[INDEX_TABLE_LIVRAISON]->setClientPrincipal(client); // L'appel du TP4
+		//tables_->INDEX_TABLE_LIVRAISON]->setClientPrincipal(client); // L'appel du TP4
+		tables_->getTable(INDEX_TABLE_LIVRAISON)->setClientPrincipal(client);
 		// TODO: Placer client à la table fictive en utilisant la classe GestionnaireTables.
-		// tables_[INDEX_TABLE_LIVRAISON]->placerClients(1); // L'appel du TP4
+		//tables_->INDEX_TABLE_LIVRAISON]->placerClients(1); // L'appel du TP4
+		tables_->getTable(INDEX_TABLE_LIVRAISON)->placerClients(1);
 		// Placer la commande
 		for (unsigned int i = 0; i < commande.size(); i++)
-			commanderPlat(commande[i], INDEX_TABLE_LIVRAISON);
+			commanderPlat(commande[i], tables_->getTable(INDEX_TABLE_LIVRAISON)->getId());
 		// Liberer la table fictive.
 		libererTable(INDEX_TABLE_LIVRAISON);
 		return true;
@@ -178,7 +187,12 @@ double Restaurant::getFraisLivraison(ZoneHabitation zone) const
 	return fraisLivraison_[static_cast<int>(zone)];
 }
 
-Menu* Restaurant::getMenu(TypeMenu typeMenu) const
+string Restaurant::getNomTypeMenu(TypeMenu typeMenu) const
+{
+	return string{ nomsDesTypesDeMenu[static_cast<int>(typeMenu)] };
+}
+
+GestionnairePlats* Restaurant::getMenu(TypeMenu typeMenu) const
 {
 	switch (typeMenu) {
 	case TypeMenu::Matin : return menuMatin_;
@@ -189,18 +203,18 @@ Menu* Restaurant::getMenu(TypeMenu typeMenu) const
 	return nullptr;  // On ne devrait jamais se rendre � cette ligne.
 }
 
-Menu* Restaurant::menuActuel() const
+GestionnairePlats* Restaurant::menuActuel() const
 {
 	return getMenu(momentJournee_);
 }
 
-Table* Restaurant::getTable(int id) const
-{
-	for (Table* table : tables_)
-		if (table->getId() == id)
-			return table;
-	return nullptr;
-}
+//Table* Restaurant::getTable(int id) const
+//{
+//	for (Table* table : tables_)
+//		if (table->getId() == id)
+//			return table;
+//	return nullptr;
+//}
 
 void Restaurant::lireAdresses(const string& nomFichier)
 {
@@ -217,11 +231,9 @@ double Restaurant::getChiffreAffaire() {
 	return chiffreAffaire_;
 }
 
-GestionnaireTables * Restaurant::getTables() const
+GestionnaireTables* Restaurant::getTables() const
 {
-
-
-	return nullptr;
+	return tables_;
 }
 
 string getNomTypeMenu(TypeMenu typeMenu)

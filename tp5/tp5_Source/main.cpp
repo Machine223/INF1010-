@@ -141,7 +141,7 @@ int main()
 	/*
 	* Affichage des tests
 	*/
-	
+
 	cout << "TESTS" << endl;
 	for (unsigned int i = 0; i < tests.size(); i++)
 	{
@@ -154,6 +154,6 @@ int main()
 
 	// Pour tester l'affichage
 	//cout << poly;
-	
+
 	return 0;
 }

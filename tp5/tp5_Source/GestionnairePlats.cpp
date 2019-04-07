@@ -102,13 +102,13 @@ Plat * GestionnairePlats::allouerPlat(Plat * plat)
 //devez retourner le plat le moins cher du conteneur.
 Plat * GestionnairePlats::trouverPlatMoinsCher() const
 {
-	FoncteurPlatMoinsCher fonction();
 	// ceci nous renvoie le pointeur it sur l'element le plus petit
-	auto it = min_element(conteneur_.begin(), conteneur_.end(),fonction); 
+	auto it = min_element(conteneur_.begin(), conteneur_.end(), FoncteurPlatMoinsCher());
 	
 	// ou on pourrais aussi faire :
-	//Plat* plat = min_element(conteneur_.begin(), conteneur_.end(), fonction)->second;
-	//return plat;
+	
+	
+	//return (min_element(conteneur_.begin(), conteneur_.end(), fonction)->second);
 	
 	return it->second;
 }
@@ -128,13 +128,11 @@ Plat * GestionnairePlats::trouverPlatPlusCher() const
 //Retourne le plat du conteneur qui porte le nom spécifié
 Plat * GestionnairePlats::trouverPlat(const string & nom) const
 {
-	auto recherche = [&](pair<string, Plat*> a, const string & nom)->bool {
-		return (a.second->getNom() == nom);
+	auto recherche = [&](pair<string, Plat*> a)->bool {
+		return (a.first == nom);
 	};
 
-	auto it = find_if(conteneur_.begin(), conteneur_.end(), recherche);
-
-	return it->second;
+	return  (find_if(conteneur_.begin(), conteneur_.end(), recherche)->second);
 }
 
 // En utilisant le FoncteurIntervalle, retournez les plats dont les prix sont compris entre

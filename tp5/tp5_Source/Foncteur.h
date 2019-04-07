@@ -15,12 +15,11 @@ using namespace std;
 // plats deux à deux du conteneur map.
 class FoncteurPlatMoinsCher
 { 
-	public:
+public:
 	bool operator()(pair<string, Plat*> a, pair<string, Plat*> b) 
 	{
 		return (a.second->getPrix() < b.second->getPrix());
-	};
-
+	}
 };
 
 //Un foncteur prédicat unaire ayant la borne inférieure et la
@@ -31,8 +30,9 @@ class FoncteurIntervalle
 	public:
 	FoncteurIntervalle(double borneI, double borneS): borneInf_(borneI), borneSup_(borneS) {}
 
-	double operator()(pair<string, Plat*> a) {
-		return (a.second->getPrix > borneInf_ && borneSup_ > a.second->getPrix);
+	bool operator()(pair<string, Plat*>const&  a) {
+
+		return ((a.second->getPrix() >= borneInf_) && (borneSup_ >= a.second->getPrix()));
 	}
 
 	private:
