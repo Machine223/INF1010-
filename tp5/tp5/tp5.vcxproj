@@ -78,6 +78,9 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -116,50 +119,52 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\tp5_Source\Boisson.cpp" />
-    <ClCompile Include="..\tp5_Source\Client.cpp" />
-    <ClCompile Include="..\tp5_Source\ClientOccasionnel.cpp" />
-    <ClCompile Include="..\tp5_Source\ClientPrestige.cpp" />
-    <ClCompile Include="..\tp5_Source\ClientRegulier.cpp" />
-    <ClCompile Include="..\tp5_Source\GestionnairePlats.cpp" />
-    <ClCompile Include="..\tp5_Source\GestionnaireTables.cpp" />
-    <ClCompile Include="..\tp5_Source\LectureFichierEnSections.cpp" />
-    <ClCompile Include="..\tp5_Source\main.cpp" />
-    <ClCompile Include="..\tp5_Source\Menu.cpp" />
-    <ClCompile Include="..\tp5_Source\Plat.cpp" />
-    <ClCompile Include="..\tp5_Source\PlatBio.cpp" />
-    <ClCompile Include="..\tp5_Source\PlatBioVege.cpp" />
-    <ClCompile Include="..\tp5_Source\PlatVege.cpp" />
-    <ClCompile Include="..\tp5_Source\Restaurant.cpp" />
-    <ClCompile Include="..\tp5_Source\Table.cpp" />
-    <ClCompile Include="..\tp5_Source\Vege.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\tp5_Source\Boisson.h" />
-    <ClInclude Include="..\tp5_Source\Client.h" />
-    <ClInclude Include="..\tp5_Source\ClientOccasionnel.h" />
-    <ClInclude Include="..\tp5_Source\ClientPrestige.h" />
-    <ClInclude Include="..\tp5_Source\ClientRegulier.h" />
+    <ClInclude Include="..\source\Boisson.h" />
+    <ClInclude Include="..\source\Client.h" />
+    <ClInclude Include="..\source\ClientOccasionnel.h" />
+    <ClInclude Include="..\source\ClientPrestige.h" />
+    <ClInclude Include="..\source\ClientRegulier.h" />
+    <ClInclude Include="..\source\debogageMemoire.hpp" />
+    <ClInclude Include="..\source\def.h" />
+    <ClInclude Include="..\source\Foncteur.h" />
+    <ClInclude Include="..\source\GestionnaireGenerique.h" />
+    <ClInclude Include="..\source\GestionnairePlats.h" />
+    <ClInclude Include="..\source\GestionnaireTables.h" />
+    <ClInclude Include="..\source\LectureFichierEnSections.h" />
+    <ClInclude Include="..\source\Menu.h" />
+    <ClInclude Include="..\source\Plat.h" />
+    <ClInclude Include="..\source\PlatBio.h" />
+    <ClInclude Include="..\source\PlatBioVege.h" />
+    <ClInclude Include="..\source\PlatVege.h" />
+    <ClInclude Include="..\source\pointers.h" />
+    <ClInclude Include="..\source\Restaurant.h" />
+    <ClInclude Include="..\source\Table.h" />
+    <ClInclude Include="..\source\Taxable.h" />
+    <ClInclude Include="..\source\Vege.h" />
     <ClInclude Include="..\tp5_Source\debogageMemoire.hpp" />
-    <ClInclude Include="..\tp5_Source\def.h" />
-    <ClInclude Include="..\tp5_Source\Foncteur.h" />
-    <ClInclude Include="..\tp5_Source\GestionnaireGenerique.h" />
-    <ClInclude Include="..\tp5_Source\GestionnairePlats.h" />
-    <ClInclude Include="..\tp5_Source\GestionnaireTables.h" />
-    <ClInclude Include="..\tp5_Source\LectureFichierEnSections.h" />
-    <ClInclude Include="..\tp5_Source\Menu.h" />
-    <ClInclude Include="..\tp5_Source\Plat.h" />
-    <ClInclude Include="..\tp5_Source\PlatBio.h" />
-    <ClInclude Include="..\tp5_Source\PlatBioVege.h" />
-    <ClInclude Include="..\tp5_Source\PlatVege.h" />
-    <ClInclude Include="..\tp5_Source\pointers.h" />
-    <ClInclude Include="..\tp5_Source\Restaurant.h" />
-    <ClInclude Include="..\tp5_Source\Table.h" />
-    <ClInclude Include="..\tp5_Source\Taxable.h" />
-    <ClInclude Include="..\tp5_Source\Vege.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\source\polyFood.txt" />
     <Text Include="..\tp5_Source\polyFood.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\Boisson.cpp" />
+    <ClCompile Include="..\source\Client.cpp" />
+    <ClCompile Include="..\source\ClientOccasionnel.cpp" />
+    <ClCompile Include="..\source\ClientPrestige.cpp" />
+    <ClCompile Include="..\source\ClientRegulier.cpp" />
+    <ClCompile Include="..\source\GestionnairePlats.cpp" />
+    <ClCompile Include="..\source\GestionnaireTables.cpp" />
+    <ClCompile Include="..\source\LectureFichierEnSections.cpp" />
+    <ClCompile Include="..\source\main.cpp" />
+    <ClCompile Include="..\source\Menu.cpp" />
+    <ClCompile Include="..\source\Plat.cpp" />
+    <ClCompile Include="..\source\PlatBio.cpp" />
+    <ClCompile Include="..\source\PlatBioVege.cpp" />
+    <ClCompile Include="..\source\PlatVege.cpp" />
+    <ClCompile Include="..\source\Restaurant.cpp" />
+    <ClCompile Include="..\source\Table.cpp" />
+    <ClCompile Include="..\source\Vege.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
